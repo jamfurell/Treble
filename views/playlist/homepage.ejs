@@ -6,17 +6,15 @@
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
 <div class="container">
     <h1 class="text-center">Hello, User, here are your playlists</h1>
-    
    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5">
-    <% playlist.forEach(function(playlist) { %> 
+    <% userInfo.playlist.forEach(function(playlist) { %> 
     <div class="col">
       <div class="card">
-        <img style="max-width: 150px;" src="" class="card-img-top mx-auto" alt="...">
+        <!-- <img style="max-width: 150px;" src="" class="card-img-top mx-auto" alt="..."> -->
         <div class="card-body text-center">
-          <h5 class="card-title text-uppercase">LOLOLO</h5>
+          <h5 class="card-title text-uppercase"><%= playlist.name %> </h5>
           <form method="POST" action="/playlist/delete">
             <input hidden type="text" name="playlistId" value="">
             <button class="btn btn-primary" type="submit">Delete</button>
