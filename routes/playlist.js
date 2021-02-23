@@ -5,73 +5,76 @@ const router = express.Router();
 const app = express();
 
 // GET a user's playlists
-router.get('/', (req, res) => {
-  db.user.findOne({
-    where: { id: 1 },
-    include: [db.playlist]
-  }).then((user) => {
-    console.log(user.playlists, '===========')
-    console.log(user, '+++++++++++')
-    res.send('The playlists of a user go here')
-//     // res.render('/playlist/index', { user: user })
-  })
-})
+// router.get('/', (req, res) => {
+//   db.user.findOne({
+//     where: { id: req.user.id },
+//     // include: [db.playlist]
+//   }).then((user) => {
+//     user.getPlaylists().then((playlists) => {
+//       res.render('playlist', { playlist, user })
+//     })
+//   })
+// })
 
-// GET a form for creating a new playlist
-router.get("/new", (req, res) => {
-  res.send('This is a form to create a new playlist')
-  // res.render("playlist/new")
-})
-
-// POST a new playlist
-router.post("/:id", (req, res) => {
-  db.playlist.findOrCreate({
-      where: {
-        name: req.body.name
-      }
-    }).then(function ([playlist, created]) {
-      db.category
-        .findOrCreate({
-          where: {
-            name: req.body.category,
-          },
-        })
-        .then(function ([category, created]) {
-          project.addCategory(category).then(function (relationInfo) {
-            res.redirect("/playlist/show");
-          });
-        });
+router.get("/", function (req, res) {
+  db.user
+    .findOne({
+      where: { id: req.user.id },
     })
-    .catch((error) => {
-      res.status(400).render("main/404");
+    .then(function (user) {
+      user.getPlaylists().then(function (playlist) {
+        const info = { playlist: playlist, user: user}
+        console.log(info)
+        res.render("playlist/homepage", { playlist: info });
+      });
     });
 });
 
-// // GET a new playlist form
-// router.post('/', function(req, res) {
-//   db.pokemon.create({
-//     name: req.body.name,
-//   }).then(function(poke) {
-//     res.redirect('/pokemon')   
-//   })   
-// })
+// POST create a new playlist
+router.post("/", (req, res) => {
+  db.playlist.findOrCreate({
+      // where: { 
+      //   name: req.body.name, 
+      //   userId: req.body.userId
+      // }
+      where: { 
+        name: 'zen',
+        userId: 1 
+      }
+    }).then(function ([playlist, created]) {
+      // res.redirect('/')
+      console.log('In the playlist create route', playlist)
+    });
+});
+
+// GET display a specific playlist
+router.get("/:id", (req, res) => {
+  db.playlist
+    .findOne({
+      // where: { id: 1}
+      where: { id: req.params.id }
+    })
+    .then((playlist) => {
+      if (!playlist) throw Error()
+      console.log('In the playlist show route', playlist)
+      res.send('This is a single playlist')
+      // res.render("playlist/show", { playlist: playlist })
+    })
+    .catch((error) => {
+      res.status(400).render("main/404")
+    });
+});
+
+// POST edit playlist
+router.post('/:id')
   
-//   router.get('/:id', function(req, res) {
-//     db.pokemon.findByPk(req.params.id).then(function(poke) {
-//       const pokemonUrl = `http://pokeapi.co/api/v2/pokemon/${ poke.name }`
-//       axios.get(pokemonUrl).then( function(apiResponse) {
-//         const pokemon = apiResponse.data
-//         res.render('pokemon/show', { pokemon: pokemon });  
-//       })
-//     })
-//   })
-  
-//   router.delete('/:id', function(req, res) {
-//     db.pokemon.destroy({
-//       where: { id: req.params.id }  
-//     }).then(function() { 
-//       res.redirect('/pokemon')
-//     })
-//   })
+// DELETE playlist 
+router.delete('/:id', function(req, res) {
+  db.playlist.destroy({
+    where: { id: req.params.id }  
+  }).then(function() { 
+    res.redirect('/')
+  })
+})
   
   module.exports = router;   
