@@ -7,7 +7,9 @@
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 <div class="container">
-    <h1 class="text-center">Hello, User, here are your playlists</h1>
+  <% if(userInfo.user){ %> 
+    <h1 class="text-center">Hello, <%= userInfo.user.name %>, here are your playlists</h1>
+    <% } %>
    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5">
     <% userInfo.playlist.forEach(function(playlist) { %> 
     <div class="col">

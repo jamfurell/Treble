@@ -24,7 +24,7 @@ router.get("/", function (req, res) {
     .then(function (user) {
       user.getPlaylists().then(function (playlist) {
         const userInfo = { playlist: playlist, user: user}
-        console.log(playlist[0].name, user.name)
+        // console.log(playlist[0].name)
         res.render("playlist/homepage", { userInfo });
       });
     });
