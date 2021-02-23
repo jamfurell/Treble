@@ -43,18 +43,17 @@ router.post("/", (req, res) => {
     })
 })
 
-// GET display a specific playlist
+// GET a specific playlist
 router.get("/:id", (req, res) => {
   db.playlist
     .findOne({
-      where: { id: 1}
-      // where: { id: req.params.id }
+      where: { id: req.params.id }
     })
     .then((playlist) => {
       if (!playlist) throw Error()
       console.log('In the playlist show route', playlist)
-      res.send('This is a single playlist')
-      // res.render("playlist/show", { playlist: playlist })
+      // res.send('This is a single playlist')
+      res.render("playlist/show", { playlist: playlist })
     })
     .catch((error) => {
       res.status(400).render("main/404")
