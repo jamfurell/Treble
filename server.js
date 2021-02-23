@@ -5,6 +5,7 @@ const session = require('express-session');
 const flash = require("connect-flash")
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn')
+const db = require('./models');
 
 const app = express();
 
@@ -22,6 +23,17 @@ app.use(session({
   resave: false,
   saveUninitialized: true 
 }))
+
+// app.get('/playlist', (req, res) => {
+  // db.user.findOne({
+  //   where: { id: req.params.id },
+  //   include: [db.playlist]
+  // }).then((user) => {
+  //   console.log(user)
+    // res.send('You are here')
+    // res.render('/playlist/user/:id', { user: user })
+  // })
+// })
 
 // the following two lines must appear after configuring the session
 app.use(passport.initialize())
@@ -41,7 +53,6 @@ app.use((req, res, next) => {
   next()
 })
 
-
 app.get('/', (req, res) => {
   res.render('index');
 });
@@ -51,6 +62,7 @@ app.get('/profile', isLoggedIn, (req, res) => {
 });
 
 app.use('/auth', require('./routes/auth'));
+app.use('/playlist', require('./routes/playlist'));
 
 var server = app.listen(process.env.PORT || 3000, ()=> console.log(`🎧You're listening to the smooth sounds of port ${process.env.PORT || 3000}🎧`));
 
