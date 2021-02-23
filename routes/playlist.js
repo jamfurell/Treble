@@ -1,9 +1,11 @@
 const express = require('express')
 const db = require('../models')
+const methodOverride = require("method-override")
 const router = express.Router()
 
-const app = express();
-let userId = null
+const app = express()
+
+app.use(methodOverride("_method"))
 
 router.get("/", function (req, res) {
   // console.log(req.user)
@@ -12,7 +14,7 @@ router.get("/", function (req, res) {
       where: { id: req.user.id },
     })
     .then(function (user) {
-      userId = req.user.id
+      // userId = req.user.id
       user.getPlaylists().then(function (playlist) {
         const userInfo = { playlist: playlist, user: user }
         // console.log(playlist[0].name, user.name)
@@ -22,12 +24,10 @@ router.get("/", function (req, res) {
 })
 
 // POST create a new playlist
-
-
 router.post("/", (req, res) => {
   db.user
     .findOne({
-      where: { id: userId },
+      where: { id: req.user.id },
     })
     .then(function (user) {
       db.playlist.findOrCreate({
@@ -47,8 +47,8 @@ router.post("/", (req, res) => {
 router.get("/:id", (req, res) => {
   db.playlist
     .findOne({
-      // where: { id: 1}
-      where: { id: req.params.id }
+      where: { id: 1}
+      // where: { id: req.params.id }
     })
     .then((playlist) => {
       if (!playlist) throw Error()
@@ -66,10 +66,12 @@ router.post('/:id')
 
 // DELETE playlist 
 router.delete('/:id', function (req, res) {
-  db.playlist.destroy({
-    where: { id: req.params.id }
+  console.log('In the delete route')
+  db.playlist
+    .destroy({
+      where: { id: req.params.id }
   }).then(function () {
-    res.redirect('/')
+    res.redirect('/playlist')
   })
 })
 

@@ -14,9 +14,9 @@
       <div class="card">
         <!-- <img style="max-width: 150px;" src="" class="card-img-top mx-auto" alt="..."> -->
         <div class="card-body text-center">
-          <h5 class="card-title text-uppercase"><%= playlist.name %> </h5>
-          <form method="POST" action="/playlist/delete">
-            <input hidden type="text" name="playlistId" value="">
+          <a href="playlist/<%= playlist.id %>"><h5 class="card-title text-uppercase"><%= playlist.name %> </h5> </a>
+          <form method="POST" action="/playlist/<%= playlist.id %>/?_method=DELETE">
+            <input hidden type="text" name="playlistId" value="delete">
             <button class="btn btn-primary" type="submit">Delete</button>
           </form>
         </div>
