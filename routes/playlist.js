@@ -23,9 +23,9 @@ router.get("/", function (req, res) {
     })
     .then(function (user) {
       user.getPlaylists().then(function (playlist) {
-        const info = { playlist: playlist, user: user}
-        console.log(info)
-        res.render("playlist/homepage", { playlist: info });
+        const userInfo = { playlist: playlist, user: user}
+        console.log(playlist[0].name, user.name)
+        res.render("playlist/homepage", { userInfo });
       });
     });
 });
