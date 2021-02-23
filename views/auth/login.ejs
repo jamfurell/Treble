@@ -1,9 +1,15 @@
-<form action="/auth/login" method="POST">
-  <label for="auth-email">Email</label>
-  <input id="auth-email" type="email" name="email">
 
-  <label for="auth-password">Password</label>
-  <input id="auth-password" type="password" name="password">
+<div style="display:flex; justify-content:center"> 
+  <form action="/auth/login" method="POST">
+    <div class="col-md-12">
+      <label for="auth-email">Email</label>
+      <input class="form-control" id="auth-email" type="email" name="email" placeholder="enter your email">
+    </div>
+    <div class= "col-md-12">
+      <label for="auth-password">Password</label>
+      <input class="form-control" id="auth-password" type="password" name="password" placeholder="enter your password">
+    </div>
+      <input type="submit" class="btn btn-primary" value="Log In">
+  </form>
+</div>
 
-  <input type="submit" value="Log In">
-</form>
