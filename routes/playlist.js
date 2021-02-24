@@ -1,4 +1,10 @@
 const express = require('express')
+<<<<<<< HEAD
+=======
+const db = require('../models')
+const methodOverride = require("method-override")
+const axios = require('axios')
+>>>>>>> submain
 const router = express.Router()
 const methodOverride = require("method-override")
 const db = require('../models')
@@ -47,7 +53,7 @@ router.post("/", (req, res) => {
     })
 })
 
-// GET display a specific playlist
+// GET a specific playlist
 router.get("/:id", (req, res) => {
   db.playlist
     .findOne({
@@ -55,17 +61,57 @@ router.get("/:id", (req, res) => {
     })
     .then((playlist) => {
       if (!playlist) throw Error()
-      console.log('In the playlist show route', playlist)
-      res.send('This is a single playlist')
-      // res.render("playlist/show", { playlist: playlist })
+      console.log('In the playlist show route')
+      res.render("playlist/show", { playlist: playlist })
     })
     .catch((error) => {
-      res.status(400).render("main/404")
+      // res.status(400).render("main/404")
     });
 });
 
-// POST edit playlist
-router.post('/:id')
+// GET songs from the API to display on the playlist show page
+router.get('/:id/search', function (req, res) {
+  console.log('In the GET songs route')
+  console.log(req.query.track)
+  console.log(req.query.artist)
+  let artist = req.query.artist
+  let track = req.query.track
+  const lastFmUrl = `http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=${artist}&track=${track}&api_key=54ecd3b57971473496ea1afe47a354a8&format=json`
+  axios.get(lastFmUrl).then(function (apiResponse) {
+    const songs = apiResponse
+    console.log(songs)
+    res.send('Oh, haiiiiiiiiiii')
+    // res.render('playlist/search', { songs })
+  })
+})
+
+// POST add a song to the database
+router.post('/', (req, res) => {
+  db.playlist
+    .findOrCreate({
+      where: {
+        id: req.params.id
+      },
+    })
+    .then(function (playlist) {
+      db.song.findOrCreate({
+        where: {
+          name: req.body.name,
+          artist: req.body.artist,
+          album: req.body.album,
+          lastFmId: req.body.lastFmId
+        },
+      })
+        .then(function ([song, created]) {
+          playlist.addSong(song).then(function (relationInfo) {
+            res.redirect('/')
+          })
+            .catch((error) => {
+              res.status(400).render("main/404")
+            });
+        });
+    })
+})
 
 // DELETE playlist 
 router.delete('/:id', function (req, res) {
