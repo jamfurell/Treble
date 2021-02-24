@@ -52,29 +52,69 @@ router.get("/:id", (req, res) => {
     })
     .then((playlist) => {
       if (!playlist) throw Error()
-      console.log('In the playlist show route')
+      // console.log('In the playlist show route', playlist.name)
+      // res.send('this is the playlist show page')
       res.render("playlist/show", { playlist: playlist })
     })
     .catch((error) => {
-      // res.status(400).render("main/404")
+      res.status(400).render("main/404")
     });
 });
 
 // GET songs from the API to display on the playlist show page
 router.get('/:id/search', function (req, res) {
-  console.log('In the GET songs route')
-  console.log(req.query.track)
-  console.log(req.query.artist)
-  let artist = req.query.artist
-  let track = req.query.track
-  const lastFmUrl = `http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=${artist}&track=${track}&api_key=54ecd3b57971473496ea1afe47a354a8&format=json`
-  axios.get(lastFmUrl).then(function (apiResponse) {
-    const songs = apiResponse
-    console.log(songs)
-    res.send('Oh, haiiiiiiiiiii')
-    // res.render('playlist/search', { songs })
+  db.playlist
+    .findOne({
+      where: { 
+        id: req.params.id 
+    },
   })
+  .then(function (playlist) {
+    let artist = req.query.artist
+    let track = req.query.track
+    const lastFmUrl = `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${track}&api_key=54ecd3b57971473496ea1afe47a354a8&format=json`
+    axios.get(lastFmUrl).then(function (apiResponse) {
+      const songs = apiResponse.data.results.trackmatches.track
+      console.log(songs, '++++++++++++++++++')
+      console.log(playlist, '++++++++++++++++++')
+      res.render('playlist/search', { songs, playlist })
+        //  res.send('Oh, haiiiiiiiiiii')
+    })
+  })
+
+  // console.log('In the GET songs route', req.params.id)
+  // console.log(req.query.track)
+  // console.log(req.query.artist)
+
+    // console.log(songs.data)
+    // console.log(songs.data.track.name)
+    // console.log(songs.data.track.url)
+    // console.log(songs.data.track.artist.name)
+    // console.log(songs.data.track.album.image)
+ 
+
+
 })
+
+// GET songs from the API to display on the playlist show page -- WORKS W/O PLAYLIST 
+// router.get('/:id/search', function (req, res) {
+//   // console.log('In the GET songs route', req.params.id)
+//   // console.log(req.query.track)
+//   // console.log(req.query.artist)
+//   let artist = req.query.artist
+//   let track = req.query.track
+//   const lastFmUrl = `http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=54ecd3b57971473496ea1afe47a354a8&artist=${artist}&track=${track}&format=json`
+//   axios.get(lastFmUrl).then(function (apiResponse) {
+//     const songs = apiResponse
+//     console.log(songs.data)
+//     // console.log(songs.data.track.name)
+//     // console.log(songs.data.track.url)
+//     // console.log(songs.data.track.artist.name)
+//     // console.log(songs.data.track.album.image)
+//     res.send('Oh, haiiiiiiiiiii')
+//     // res.render('playlist/search', { songs })
+//   })
+// })
 
 // POST add a song to the database
 router.post('/', (req, res) => {

@@ -11,9 +11,9 @@
           </tr>
         </thead>
         <tbody>
-          <% playlist.forEach(function(song){ %>
+          <% songs.forEach(function(song){ %>
           <tr>
-            <th scope="row"><%= song.title %></th>
+            <th scope="row"><%= song.name %></th>
             <td><%= song.artist %></td>
             <td><%= song.album %></td>
           </tr>
@@ -49,17 +49,17 @@
         </div>
       </form>
       <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5">
-        <% searchResults.forEach(function(song) { %>
+        <% songs.forEach(function(song) { %>
         <div class="col">
           <div class="card">
             <img
               style="max-width: 150px"
-              src="https://upload.wikimedia.org/wikipedia/en/2/2a/Linkin_Park_Hybrid_Theory_Album_Cover.jpg"
+              src="<%= song.image[0]["#text"] %> "
               class="card-img-top mx-auto"
               alt="..."
             />
             <div class="card-body text-left">
-              <h5 class="card-title">title<br />artist<br />album</h5>
+              <h5 class="card-title"><%= song.name %> <br /><%= song.artist %> <br />album</h5>
               <form method="POST" action="/song">
                 <input
                   hidden
