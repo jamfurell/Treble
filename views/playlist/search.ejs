@@ -23,7 +23,7 @@
     </div>
     <div class="col">
       <h3>Add New Songs To Your Playlist</h3>
-      <form class="row g-3" action="songs/search">
+      <form class="row g-3" method="POST" action="playlist/search">
         <div class="col-auto">
           <label for="songTitle" class="visually-hidden">Title</label>
           <input
@@ -60,18 +60,18 @@
             />
             <div class="card-body text-left">
               <h5 class="card-title"><%= song.name %> <br /><%= song.artist %> <br />album</h5>
-              <form method="POST" action="/song">
+              <form method="POST" action="/playlist/<%= playlist.id %>/search">
                 <input
                   hidden
                   type="text"
-                  name="lastFmId"
-                  value="<%= song.lastFmId %>"
+                  name="songUrl"
+                  value="<%= song.url %>"
                 />
                 <input
                   hidden
                   type="text"
-                  name="title"
-                  value="<%= song.title %>"
+                  name="name"
+                  value="<%= song.name %>"
                 />
                 <input
                   hidden
