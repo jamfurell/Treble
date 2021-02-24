@@ -56,6 +56,7 @@ router.get("/:id", (req, res) => {
     .then((playlist) => {
       if (!playlist) throw Error()
       console.log('In the playlist show route')
+      console.log("====The playlist from specific playlist get====>", playlist, "<=======")
       res.render("playlist/show", { playlist: playlist })
     })
     .catch((error) => {

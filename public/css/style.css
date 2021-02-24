@@ -1,9 +1,38 @@
-nav ul li {
+/* nav ul li {
   text-decoration: none;
   display: inline-block;
   margin-right: .3em;
+} */
+*{
+  margin: 0;
+  padding: 0;
 }
 
-h1 {
-  color: chartreuse;
+body{
+  background-color: rgba(239, 141, 52, 0.966);
+}
+h1, h2 {
+  /* color: rgb(159, 92, 221); */
+  color: white;
+}
+.navbar-nav a {
+  font-size: 15px;
+  padding: 10px;
+}
+nav{
+  background-image: linear-gradient(rgb(22, 21, 21),rgb(95, 94, 94));
+  border-bottom: solid 2px rgb(126, 124, 124);
+  margin-bottom: 10px;
+}
+.navbar-nav{
+  display: flex; 
+  flex-direction: row;
+  padding-bottom: 0;
+}
+/* .treble-logo{
+  background-image: linear-gradient(rgb(95, 94, 94),rgb(22, 21, 21));
+  padding: 10px;
+} */
+.btn-primary{
+  margin-top: 8px;
 }
