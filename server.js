@@ -7,6 +7,7 @@ const passport = require('./config/ppConfig')
 const isLoggedIn = require('./middleware/isLoggedIn')
 const methodOverride = require("method-override")
 const db = require('./models')
+const expressEjsLayouts = require('express-ejs-layouts')
 
 const app = express()
 
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static(__dirname + '/public'))
 app.use(methodOverride("_method"))
 app.use(layouts);
+
 
 app.use(session({
   // a string used to generate a unique 
