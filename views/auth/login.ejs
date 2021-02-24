@@ -1,15 +1,38 @@
 
-<div style="display:flex; justify-content:center"> 
-  <form action="/auth/login" method="POST">
-    <div class="col-md-12">
-      <label for="auth-email">Email</label>
-      <input class="form-control" id="auth-email" type="email" name="email" placeholder="enter your email">
-    </div>
-    <div class= "col-md-12">
-      <label for="auth-password">Password</label>
-      <input class="form-control" id="auth-password" type="password" name="password" placeholder="enter your password">
-    </div>
-      <input type="submit" class="btn btn-primary" value="Log In">
-  </form>
-</div>
 
+<main class="container-fluid"> 
+  <div class="row content"> 
+
+
+    <div class="col-sm-7"> 
+        <img style="border-radius: 15%" class="img-fluid" src="../images/girl-headP.png">
+    </div>
+      
+
+    <div class="col-sm-5 logo-login">
+      <div style="display:flex; flex-direction:column"> 
+              <div class="treble-logo">
+                <img class="img-fluid" src="../images/Treble_Logo.png ">
+              </div>
+              <div class="login-form">
+                <div style="display:flex; justify-content:center"> 
+                  <form action="/auth/login" method="POST">
+                    <div class="col-md-12">
+                      <label for="auth-email">Email</label>
+                      <input class="form-control" id="auth-email" type="email" name="email" placeholder="enter your email">
+                    </div>
+                    <div class= "col-md-12">
+                      <label for="auth-password">Password</label>
+                      <input class="form-control" id="auth-password" type="password" name="password" placeholder="enter your password">
+                    </div>
+                      <input style="text-align:center" type="submit" class="btn btn-primary" value="Log In">
+                  </form>
+                </div>
+              </div>            
+
+      </div>
+    </div>
+
+
+  </div>
+</main>

@@ -42,7 +42,7 @@ router.get('/login', (req, res) => {
 // +++++++++++++++++++++++++++++++++++++++++++
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/playlist',
-  failureRedirect: '/auth/login',
+  failureRedirect: '/',
   successFlash: 'You have logged in!',
   failureFlash: 'Invalid username and/or password.'
 }))

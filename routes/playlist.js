@@ -9,15 +9,17 @@ const app = express()
 app.use(methodOverride("_method"))
 
 router.get("/", function (req, res) {
-  // console.log(req.user)
+  // console.log("=====This is req.user ==>", req.user, " <=======")
   db.user
     .findOne({
       where: { id: req.user.id },
     })
     .then(function (user) {
       // userId = req.user.id
+      
       user.getPlaylists().then(function (playlist) {
         const userInfo = { playlist: playlist, user: user }
+        // console.log("=====This is userInfo ==>", userInfo, " <=======")
         // console.log(playlist[0].name, user.name)
         res.render("playlist/homepage", { userInfo })
       })
@@ -28,7 +30,8 @@ router.get("/", function (req, res) {
 router.post("/", (req, res) => {
   db.user
     .findOne({
-      where: { id: req.user.id },
+      where: { id: req.user.id },    
+      // <=====req.user.id is accessible through all pages?
     })
     .then(function (user) {
       db.playlist.findOrCreate({
@@ -53,7 +56,7 @@ router.get("/:id", (req, res) => {
     .then((playlist) => {
       if (!playlist) throw Error()
       // console.log('In the playlist show route', playlist.name)
-      // res.send('this is the playlist show page')
+      // res.send('this is the playlist show page') 
       res.render("playlist/show", { playlist: playlist })
     })
     .catch((error) => {
