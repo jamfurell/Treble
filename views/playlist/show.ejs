@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="col">
+          <h3 class="text-end">Add New Songs To Your Playlist</h3>
+          <form class="row g-3 justify-content-end" action="songs/search">
+            <div class="col-auto">
+              <label for="songTitle" class="visually-hidden">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                name="songTitle"
+                id="songTitle"
+                placeholder="Title"
+              />
+            </div>
+            <div class="col-auto">
+              <label for="songArtist" class="visually-hidden">Artist</label>
+              <input
+                type="text"
+                class="form-control"
+                name="songArtist"
+                id="songArtist"
+                placeholder="Artist"
+              />
+            </div>
+            <div class="col-auto">
+              <button type="submit" class="btn btn-primary mb-3">Search</button>
+            </div>
+            <h3>Playlist Name</h3>
+          </form>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Artist</th>
+                <th scope="col">Album</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% playlist.forEach(function(song){ %>
+                  <tr>
+                    <th scope="row"><%= song.title %></th>
+                    <td><%= song.artist %></td>
+                    <td><%= song.album %></td>
+                  </tr>
+                  <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
