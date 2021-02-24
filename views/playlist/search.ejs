@@ -15,7 +15,7 @@
           <tr>
             <th scope="row"><%= song.name %></th>
             <td><%= song.artist %></td>
-            <td><%= song.name %></td>
+            <td><%= song.album %></td>
           </tr>
           <% }) %>
         </tbody>
@@ -23,7 +23,7 @@
     </div>
     <div class="col">
       <h3>Add New Songs To Your Playlist</h3>
-      <form class="row g-3" method="POST" action="playlist/search">
+      <form class="row g-3" action="/playlist/<%= playlist.id %>/search" method="GET">
         <div class="col-auto">
           <label for="songTitle" class="visually-hidden">Title</label>
           <input
@@ -35,55 +35,47 @@
           />
         </div>
         <div class="col-auto">
-          <label for="songArtist" class="visually-hidden">Artist</label>
-          <input
-            type="text"
-            class="form-control"
-            name="songArtist"
-            id="songArtist"
-            placeholder="Artist"
-          />
-        </div>
-        <div class="col-auto">
-          <button type="submit" class="btn btn-primary mb-3">Search</button>
+          <button style="margin-top: 0px;" type="submit" class="btn btn-primary mb-3">Search</button>
         </div>
       </form>
-      <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
         <% songs.forEach(function(song) { %>
         <div class="col">
-          <div class="card">
+          <div class="card" style="width: 150px;">
             <img
               style="max-width: 150px"
-              src="<%= song.image[0]["#text"] %>"
+              src="<%=song.album.cover%>"
               class="card-img-top mx-auto"
               alt="..."
             />
             <div class="card-body text-left">
-              <h5 class="card-title"><%= song.name %> <br /><%= song.artist %> <br />album</h5>
+              <h5 class="card-title"><%= song.title %></h5>
+              <p class="card-subtitle"><%= song.artist.name %></p>
+              <p class="card-text"><%= song.album.title %></p>
               <form method="POST" action="/playlist/<%= playlist.id %>/search">
                 <input
                   hidden
                   type="text"
-                  name="songUrl"
-                  value="<%= song.url %>"
+                  name="lastFmId"
+                  value=""
                 />
                 <input
                   hidden
                   type="text"
-                  name="name"
-                  value="<%= song.name %>"
+                  name="title"
+                  value="<%= song.title %>"
                 />
                 <input
                   hidden
                   type="text"
                   name="artist"
-                  value="<%= song.artist %>"
+                  value="<%= song.artist.name %>"
                 />
                 <input
                   hidden
                   type="text"
                   name="album"
-                  value="<%= song.album %>"
+                  value="<%= song.album.title %>"
                 />
                 <button class="btn btn-primary" type="submit">
                   Add to Playlist
