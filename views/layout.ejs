@@ -10,17 +10,26 @@
   </head>
   <body>
     <header>
-      <nav>
-        <ul>
-          <% if (!currentUser) { %>
-            <li><a href="/auth/signup">Signup</a></li>
-            <!-- <li><a href="/auth/login">Login</a></li> -->
-          <% } else { %>
-            <li><a href="/auth/logout">Logout</a></li>
-            <li><a href="/profile">Profile</a></li>
-          <% } %>
-        </ul>
-      </nav>
+  
+
+      <nav class="navbar sticky-top navbar-inverse navbar-dark bg-dark">
+        <div class="container-fluid"> 
+          <a class="navbar-brand" href="#">TREBLE</a>
+                <ul >
+                   <% if (!currentUser) { %>
+                  <li class="active"><a href="/auth/signup">SignUp</a></li>
+                </ul>
+            <% } else { %>
+                <ul class="navbar-right">
+                  <li><a href="/profile">Profile</a></li>
+                  <li><a href="/auth/logout">Logout</a></li>
+                  <% } %>
+                </ul> 
+        </div>
+     </nav>
+
+       
+            
     </header>
     <!-- <%- include("partials/alerts") %> -->
   
