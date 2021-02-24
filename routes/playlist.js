@@ -17,8 +17,6 @@ router.get("/", function (req, res) {
       where: { id: req.user.id },
     })
     .then(function (user) {
-      // userId = req.user.id
-      
       user.getPlaylists().then(function (playlist) {
         const userInfo = { playlist: playlist, user: user }
         // console.log("=====This is userInfo ==>", userInfo, " <=======")
@@ -69,25 +67,44 @@ router.get("/:id", (req, res) => {
 });
 
 // GET songs from the API to display on the playlist show page
+// router.get('/:id/search', function (req, res) {
+//   // console.log(req.params.id)
+//   db.playlist
+//     .findOne({
+//       where: { id: req.params.id },
+//       include: [db.song]
+//   })
+//   .then(function (playlist) {
+//     let artist = req.query.artist
+//     let track = req.query.track
+//     // console.log(req.query)
+//     // console.log(req.query.artist)
+//     const lastFmUrl = `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${track}&api_key=54ecd3b57971473496ea1afe47a354a8&format=json`
+//     axios.get(lastFmUrl).then(function (apiResponse) {
+//       const songs = apiResponse.data.results.trackmatches.track
+//       console.log(songs, '++++++++++++++++++')
+//       console.log(playlist, '++++++++++++++++++')
+//       res.render('playlist/search', { songs, playlist })
+//         //  res.send('Oh, haiiiiiiiiiii')
+//     })
+//   })
+// })
+
+// GET songs from the API to display on the playlist show page
 router.get('/:id/search', function (req, res) {
-  // console.log(req.params.id)
   db.playlist
     .findOne({
       where: { id: req.params.id },
       include: [db.song]
   })
   .then(function (playlist) {
-    let artist = req.query.artist
-    let track = req.query.track
-    // console.log(req.query)
-    // console.log(req.query.artist)
-    const lastFmUrl = `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${track}&api_key=54ecd3b57971473496ea1afe47a354a8&format=json`
-    axios.get(lastFmUrl).then(function (apiResponse) {
-      const songs = apiResponse.data.results.trackmatches.track
-      console.log(songs, '++++++++++++++++++')
-      console.log(playlist, '++++++++++++++++++')
+    let track = req.query.songTitle
+    let songs=[]
+    axios.get(`https://api.deezer.com/search?q=${track}`).then(function (apiResponse) {
+    songs = apiResponse.data.data
+    }).then(function(){
+      console.log(songs)
       res.render('playlist/search', { songs, playlist })
-        //  res.send('Oh, haiiiiiiiiiii')
     })
   })
 })
@@ -105,14 +122,16 @@ router.post("/:id/search", (req, res) => {
     .then(function (playlist) {
       db.song.findOrCreate({
         where: {
-          name: req.body.name,
+          name: req.body.title,
           artist: req.body.artist,
-          lastFmId: req.body.songUrl
+          // lastFmId: req.body.songUrl,
+          album: req.body.album
         },
       })
         .then(function ([song, created]) {
           playlist.addSongs([song]).then(function (relationInfo) {
-            res.redirect(`/playlist/${req.params.id}/search`)
+            // res.redirect(`/playlist/${req.params.id}`)
+            res.redirect('back');
           })
         })
     })
@@ -145,32 +164,32 @@ router.post("/:id/search", (req, res) => {
 // })
 
 // POST add a song to the database
-router.post('/', (req, res) => {
-  db.playlist
-    .findOrCreate({
-      where: {
-        id: req.params.id
-      },
-    })
-    .then(function (playlist) {
-      db.song.findOrCreate({
-        where: {
-          name: req.body.name,
-          artist: req.body.artist,
-          album: req.body.album,
-          lastFmId: req.body.lastFmId
-        },
-      })
-        .then(function ([song, created]) {
-          playlist.addSong(song).then(function (relationInfo) {
-            res.redirect('/')
-          })
-            .catch((error) => {
-              res.status(400).render("main/404")
-            });
-        });
-    })
-})
+// router.post('/', (req, res) => {
+//   db.playlist
+//     .findOrCreate({
+//       where: {
+//         id: req.params.id
+//       },
+//     })
+//     .then(function (playlist) {
+//       db.song.findOrCreate({
+//         where: {
+//           name: req.body.name,
+//           artist: req.body.artist,
+//           album: req.body.album,
+//           lastFmId: req.body.lastFmId
+//         },
+//       })
+//         .then(function ([song, created]) {
+//           playlist.addSong(song).then(function (relationInfo) {
+//             res.redirect('/')
+//           })
+//             .catch((error) => {
+//               res.status(400).render("main/404")
+//             });
+//         });
+//     })
+// })
 
 // DELETE playlist 
 router.delete('/:id', function (req, res) {
