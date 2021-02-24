@@ -1,14 +1,8 @@
 const express = require('express')
-<<<<<<< HEAD
-=======
 const db = require('../models')
 const methodOverride = require("method-override")
 const axios = require('axios')
->>>>>>> submain
 const router = express.Router()
-const methodOverride = require("method-override")
-const db = require('../models')
-
 
 const app = express()
 
