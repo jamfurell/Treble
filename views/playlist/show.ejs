@@ -38,6 +38,13 @@
             </tr>
           </thead>
           <tbody>
+            <% playlist.songs.forEach(function(song){ %>
+                    <tr>
+                      <td scope="row"><%= song.name %></td>
+                      <td><%= song.artist %></td>
+                      <td><%= song.name %></td>
+                    </tr>
+                  <% }) %>
           </tbody>
         </table>
       </div>

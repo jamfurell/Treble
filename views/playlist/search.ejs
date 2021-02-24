@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col">
-      <h3>Playlist Name</h3>
+      <h3><%= playlist.name %> </h3>
       <table class="table">
         <thead>
           <tr>
@@ -11,11 +11,11 @@
           </tr>
         </thead>
         <tbody>
-          <% songs.forEach(function(song){ %>
+          <% playlist.songs.forEach(function(song){ %>
           <tr>
             <th scope="row"><%= song.name %></th>
             <td><%= song.artist %></td>
-            <td><%= song.album %></td>
+            <td><%= song.name %></td>
           </tr>
           <% }) %>
         </tbody>
@@ -29,7 +29,7 @@
           <input
             type="text"
             class="form-control"
-            name="songTitle"
+            name="track"
             id="songTitle"
             placeholder="Title"
           />
@@ -39,7 +39,7 @@
           <input
             type="text"
             class="form-control"
-            name="songArtist"
+            name="artist"
             id="songArtist"
             placeholder="Artist"
           />

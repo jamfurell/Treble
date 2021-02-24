@@ -8,6 +8,8 @@ const app = express()
 
 app.use(methodOverride("_method"))
 
+
+// POST show user Homepage
 router.get("/", function (req, res) {
   // console.log("=====This is req.user ==>", req.user, " <=======")
   db.user
@@ -51,13 +53,15 @@ router.post("/", (req, res) => {
 router.get("/:id", (req, res) => {
   db.playlist
     .findOne({
-      where: { id: req.params.id }
+      where: { id: req.params.id },
+      include: [db.song]
     })
     .then((playlist) => {
       if (!playlist) throw Error()
+      console.log(playlist.songs)
       // console.log('In the playlist show route', playlist.name)
       // res.send('this is the playlist show page') 
-      res.render("playlist/show", { playlist: playlist })
+      res.render("playlist/show", { playlist })
     })
     .catch((error) => {
       res.status(400).render("main/404")
@@ -69,9 +73,8 @@ router.get('/:id/search', function (req, res) {
   // console.log(req.params.id)
   db.playlist
     .findOne({
-      where: { 
-        id: req.params.id 
-    },
+      where: { id: req.params.id },
+      include: [db.song]
   })
   .then(function (playlist) {
     let artist = req.query.artist
@@ -115,15 +118,7 @@ router.post("/:id/search", (req, res) => {
     })
 })
 
-  // console.log('In the GET songs route', req.params.id)
-  // console.log(req.query.track)
-  // console.log(req.query.artist)
 
-    // console.log(songs.data)
-    // console.log(songs.data.track.name)
-    // console.log(songs.data.track.url)
-    // console.log(songs.data.track.artist.name)
-    // console.log(songs.data.track.album.image)
  
 
 
