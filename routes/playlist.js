@@ -66,6 +66,7 @@ router.get("/:id", (req, res) => {
 
 // GET songs from the API to display on the playlist show page
 router.get('/:id/search', function (req, res) {
+  // console.log(req.params.id)
   db.playlist
     .findOne({
       where: { 
@@ -75,6 +76,8 @@ router.get('/:id/search', function (req, res) {
   .then(function (playlist) {
     let artist = req.query.artist
     let track = req.query.track
+    // console.log(req.query)
+    // console.log(req.query.artist)
     const lastFmUrl = `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${track}&api_key=54ecd3b57971473496ea1afe47a354a8&format=json`
     axios.get(lastFmUrl).then(function (apiResponse) {
       const songs = apiResponse.data.results.trackmatches.track
@@ -84,6 +87,33 @@ router.get('/:id/search', function (req, res) {
         //  res.send('Oh, haiiiiiiiiiii')
     })
   })
+})
+
+// POST associate a song with a playlist
+router.post("/:id/search", (req, res) => {
+  console.log('In the song route')
+  // console.log(req.body)
+  console.log(req.body)
+  console.log(req.params.id)
+  db.playlist
+    .findOne({
+      where: { id: req.params.id },    
+    })
+    .then(function (playlist) {
+      db.song.findOrCreate({
+        where: {
+          name: req.body.name,
+          artist: req.body.artist,
+          lastFmId: req.body.songUrl
+        },
+      })
+        .then(function ([song, created]) {
+          playlist.addSongs([song]).then(function (relationInfo) {
+            res.redirect(`/playlist/${req.params.id}/search`)
+          })
+        })
+    })
+})
 
   // console.log('In the GET songs route', req.params.id)
   // console.log(req.query.track)
@@ -97,19 +127,19 @@ router.get('/:id/search', function (req, res) {
  
 
 
-})
+
 
 // GET songs from the API to display on the playlist show page -- WORKS W/O PLAYLIST 
 // router.get('/:id/search', function (req, res) {
 //   // console.log('In the GET songs route', req.params.id)
-//   // console.log(req.query.track)
-//   // console.log(req.query.artist)
+//   console.log(req.query.track)
+//   console.log(req.query.artist)
 //   let artist = req.query.artist
 //   let track = req.query.track
 //   const lastFmUrl = `http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=54ecd3b57971473496ea1afe47a354a8&artist=${artist}&track=${track}&format=json`
 //   axios.get(lastFmUrl).then(function (apiResponse) {
 //     const songs = apiResponse
-//     console.log(songs.data)
+//     // console.log(songs.data)
 //     // console.log(songs.data.track.name)
 //     // console.log(songs.data.track.url)
 //     // console.log(songs.data.track.artist.name)
