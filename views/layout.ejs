@@ -1,41 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Authentication</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
 
-  </head>
-  <body>
-    <header>
-      <nav class="navbar sticky-top navbar-inverse navbar-dark bg-dark navbar-expand-xl">
-        <div class="container-fluid"> 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Authentication</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style.css">
 
-            <a class="navbar-brand" href="/">
-              <img src="/images/Treble_Logo.png" width="150" height="60" alt="">
-            </a>
-                
-                    <% if (!currentUser) { %>
-                    <a class="active"><a href="/auth/signup">SignUp</a></li>
-                  
-              <% } else { %>
-                <span class="navbar-nav"> 
-                  <a class="nav-item col" href="/playlist">Profile</a>
+</head>
 
-                    <a class="nav-item col" href="/auth/logout">Logout</a>
-                    <% } %>
-                 
-        </div>
+<body>
+  <header>
+    <nav class="navbar sticky-top navbar-inverse navbar-dark bg-dark navbar-expand-xl">
+      <div class="container-fluid">
+
+        <a class="navbar-brand" href="/">
+          <img src="/images/Treble_Logo.png" width="150" height="60" alt="">
+        </a>
+
+        <% if (!currentUser) { %>
+          <a class="active"><a href="/auth/signup">SignUp</a></li>
+
+            <% } else { %>
+              <span class="navbar-nav">
+                <a class="nav-item col" href="/playlist">Profile</a>
+
+                <a class="nav-item col" href="/auth/logout">Logout</a>
+                <% } %>
+
+      </div>
     </nav>
-      
-    </header>
-    <!-- <%- include("partials/alerts") %> -->
-  
-    
-    <%- body %>
 
-  </body>
+    <style>
+      body {
+        background-image: url('https://w.wallhaven.cc/full/2k/wallhaven-2kg596.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+    </style>
+
+  </header>
+  <!-- <%- include("partials/alerts") %> -->
+
+
+  <%- body %>
+
+</body>
+
 </html>
