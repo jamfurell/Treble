@@ -1,25 +1,99 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col">
-      <h3><%= playlist.name %> </h3>
-      <table class="table">
+      <h1><%= playlist.name %></h1>
+      <table class="table table-hover table-dark table-striped">
         <thead>
           <tr>
             <th scope="col">Title</th>
             <th scope="col">Artist</th>
             <th scope="col">Album</th>
+            <th style="text-align: center" scope="col"></th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           <% playlist.songs.forEach(function(song){ %>
           <tr>
-            <th scope="row"><%= song.name %></th>
-            <td><%= song.artist %></td>
-            <td><%= song.album %></td>
-            <td>
-              <form method="POST" action="/playlist/<%= playlist.id %>/song/?_method=DELETE">
-                <input hidden type="text" name="songId" value="<%= song.id %> ">
-                <button class="btn btn-danger" type="submit">Delete</button>
+            <td
+              style="
+                max-width: 200px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              "
+            >
+              <%= song.name %>
+            </td>
+            <td
+              style="
+                max-width: 200px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              "
+            >
+              <%= song.artist %>
+            </td>
+            <td
+              style="
+                max-width: 200px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              "
+            >
+              <%= song.album %>
+            </td>
+            <td style="text-align: center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-heart"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+                />
+              </svg>
+            </td>
+            <td style="text-align: center">
+              <form
+                method="POST"
+                action="/playlist/<%= playlist.id %>/song/?_method=DELETE"
+              >
+                <input
+                  hidden
+                  type="text"
+                  name="songId"
+                  value="<%= song.id %>"
+                />
+                <button
+                  style="
+                    border: none;
+                    background-color: transparent;
+                    color: white;
+                  "
+                  type="submit"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-x-circle"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                    />
+                    <path
+                      d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                    />
+                  </svg>
+                </button>
               </form>
             </td>
           </tr>
@@ -28,8 +102,13 @@
       </table>
     </div>
     <div class="col">
-      <h3>Add New Songs To Your Playlist</h3>
-      <form class="row g-3" action="/playlist/<%= playlist.id %>/search" method="GET">
+      <h3 style="color: white">Add New Songs To <%= playlist.name %></h3>
+      <form
+        class="row g-3"
+        style="margin-bottom: 1rem"
+        action="/playlist/<%= playlist.id %>/search"
+        method="GET"
+      >
         <div class="col-auto">
           <label for="songTitle" class="visually-hidden">Title</label>
           <input
@@ -37,33 +116,76 @@
             class="form-control"
             name="songTitle"
             id="songTitle"
-            placeholder="Title"
+            placeholder="Title, Artist or Album"
           />
         </div>
         <div class="col-auto">
-          <button style="margin-top: 0px;" type="submit" class="btn btn-primary mb-3">Search</button>
+          <button style="margin-top: 0px" type="submit" class="btn btn-info">
+            Search
+          </button>
         </div>
       </form>
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
         <% songs.forEach(function(song) { %>
         <div class="col">
-          <div class="card" style="width: 150px;">
+          <div
+            class="card"
+            style="
+              height: auto;
+              width: 300px;
+              border: none;
+              margin-bottom: 2rem;
+            "
+          >
             <img
-              style="max-width: 150px"
-              src="<%=song.album.cover%>"
+              style="max-width: 300px"
+              src="<%=song.album.cover_xl%>"
               class="card-img-top mx-auto"
               alt="..."
             />
-            <div class="card-body text-left">
-              <h5 class="card-title"><%= song.title %></h5>
-              <p class="card-subtitle"><%= song.artist.name %></p>
-              <p class="card-text"><%= song.album.title %></p>
+            <div
+              class="card-body text-left"
+              style="padding: 1rem 1rem; font-size: 16px"
+            >
+              <h5
+                class="card-title"
+                style="
+                  width: 250px;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                "
+              >
+                <%= song.title %>
+              </h5>
+              <p
+                class="card-subtitle"
+                style="
+                  width: 250px;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                "
+              >
+                <%= song.artist.name %>
+              </p>
+              <p
+                class="card-text"
+                style="
+                  width: 250px;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                "
+              >
+                <%= song.album.title %>
+              </p>
               <form method="POST" action="/playlist/<%= playlist.id %>/search">
                 <input
                   hidden
                   type="text"
                   name="lastFmId"
-                  value=""
+                  value="<%= song.id %>"
                 />
                 <input
                   hidden
@@ -83,7 +205,7 @@
                   name="album"
                   value="<%= song.album.title %>"
                 />
-                <button class="btn btn-primary" type="submit">
+                <button class="btn btn-outline-success btn-sm" type="submit">
                   Add to Playlist
                 </button>
               </form>
