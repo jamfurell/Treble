@@ -1,0 +1,26 @@
+
+<div class="row justify-content-end">
+    <div class="col-md-6">
+      <form style="margin: 15px" method="POST" action="/playlist/<%= playlist.id %>/?_method=PUT">
+        <div class="form-group">
+            <div class="col-auto">
+              <label for="playlistName"> Edit Your Playlist Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="playlistName"
+                id="updatePlaylist"
+                placeholder="<%= playlist.name %>"
+              />
+              <small id="emailHelp" class="form-text text-muted">Be creative with your naming.</small>
+            </div>
+            <div class="col-auto">
+                <input hidden type="text" value="<%= playlist.id %>" name="playlist">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+      </form>
+    </div>
+</div>
+
+

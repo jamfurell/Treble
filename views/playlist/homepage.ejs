@@ -35,6 +35,9 @@
           <!-- <img style="max-width: 150px;" src="" class="card-img-top mx-auto" alt="..."> -->
           <div class="card-body text-center">
             <a href="playlist/<%= playlist.id %>"><h5 class="card-title text-uppercase"><%= playlist.name %> </h5> </a>
+            <form method="GET" action="/playlist/<%= playlist.id %>/edit">
+              <button class="btn btn-primary" type="submit" value="Edit">Edit Playlist</button>
+            </form>
             <form method="POST" action="/playlist/<%= playlist.id %>/?_method=DELETE">
               <input hidden type="text" name="playlistId" value="delete">
               <button class="btn btn-danger" type="submit">Delete</button>

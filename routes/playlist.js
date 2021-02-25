@@ -192,15 +192,15 @@ router.post("/:id/search", (req, res) => {
 // })
 
 // DELETE playlist 
-// router.delete('/:id', function (req, res) {
-//   console.log('In the delete route')
-//   db.playlist
-//     .destroy({
-//       where: { id: req.params.id }
-//   }).then(function () {
-//     res.redirect('/playlist')
-//   })
-// })
+router.delete('/:id', function (req, res) {
+  console.log('In the delete route')
+  db.playlist
+    .destroy({
+      where: { id: req.params.id }
+  }).then(function () {
+    res.redirect('/playlist')
+  })
+})
 
 // DELETE playlist 
 router.delete('/:id/song', function (req, res) {
