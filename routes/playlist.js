@@ -131,7 +131,7 @@ router.post("/:id/search", (req, res) => {
         .then(function ([song, created]) {
           playlist.addSongs([song]).then(function (relationInfo) {
             // res.redirect(`/playlist/${req.params.id}`)
-            res.redirect('back');
+            res.redirect('back')
           })
         })
     })
@@ -192,13 +192,28 @@ router.post("/:id/search", (req, res) => {
 // })
 
 // DELETE playlist 
-router.delete('/:id', function (req, res) {
+// router.delete('/:id', function (req, res) {
+//   console.log('In the delete route')
+//   db.playlist
+//     .destroy({
+//       where: { id: req.params.id }
+//   }).then(function () {
+//     res.redirect('/playlist')
+//   })
+// })
+
+// DELETE playlist 
+router.delete('/:id/song', function (req, res) {
   console.log('In the delete route')
-  db.playlist
+  console.log(req.body, "REQQQQQQQQQQ")
+  db.playlistsSongs
     .destroy({
-      where: { id: req.params.id }
+      where: { 
+        playlistId: req.params.id,
+        songId: req.body.songId
+      }
   }).then(function () {
-    res.redirect('/playlist')
+    res.redirect('back')
   })
 })
 

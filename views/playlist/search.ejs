@@ -16,6 +16,12 @@
             <th scope="row"><%= song.name %></th>
             <td><%= song.artist %></td>
             <td><%= song.album %></td>
+            <td>
+              <form method="POST" action="/playlist/<%= playlist.id %>/song/?_method=DELETE">
+                <input hidden type="text" name="songId" value="<%= song.id %> ">
+                <button class="btn btn-danger" type="submit">Delete</button>
+              </form>
+            </td>
           </tr>
           <% }) %>
         </tbody>
