@@ -1,30 +1,49 @@
-<form style="margin: 15px" action="/playlist" method="POST">
-  <div class="form-group">
-    <label for="exampleInputEmail1"> Create a Playlist</label>
-    <input type="text" class="form-control" id="createPlaylist" name="name" placeholder="Enter A New Playlist Name">
-    <small id="emailHelp" class="form-text text-muted">Be creative with your naming.</small>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
 
-<div class="container">
-  <% if(userInfo.user){ %> 
-    <h1 class="text-center">Hello <%= userInfo.user.name %>, here are your playlists</h1>
-    <% } %>
-   <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5">
-    <% userInfo.playlist.forEach(function(playlist) { %> 
-    <div class="col">
-      <div class="card">
-        <!-- <img style="max-width: 150px;" src="" class="card-img-top mx-auto" alt="..."> -->
-        <div class="card-body text-center">
-          <a href="playlist/<%= playlist.id %>"><h5 class="card-title text-uppercase"><%= playlist.name %> </h5> </a>
-          <form method="POST" action="/playlist/<%= playlist.id %>/?_method=DELETE">
-            <input hidden type="text" name="playlistId" value="delete">
-            <button class="btn btn-danger" type="submit">Delete</button>
-          </form>
+
+<div class="container-fluid">
+  <div class="row justify-content-end"> 
+      <div class="col-md-6">
+        <form style="margin: 15px" action="/playlist" method="POST">
+          <div class="form-group">
+              <div class="col-auto">
+                <label for="exampleInputEmail1"> Create a Playlist</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  id="createPlaylist"
+                  placeholder="Enter a New Playlist"
+                />
+                <small id="emailHelp" class="form-text text-muted">Be creative with your naming.</small>
+              </div>
+              <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+        </form>
+      </div>
+  </div>
+
+  <div class="container">
+    <% if(userInfo.user){ %> 
+      <h1 class="text-center">Hello <%= userInfo.user.name %>, here are your playlists</h1>
+      <% } %>
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5">
+      <% userInfo.playlist.forEach(function(playlist) { %> 
+      <div class="col">
+        <div class="card">
+          <!-- <img style="max-width: 150px;" src="" class="card-img-top mx-auto" alt="..."> -->
+          <div class="card-body text-center">
+            <a href="playlist/<%= playlist.id %>"><h5 class="card-title text-uppercase"><%= playlist.name %> </h5> </a>
+            <form method="POST" action="/playlist/<%= playlist.id %>/?_method=DELETE">
+              <input hidden type="text" name="playlistId" value="delete">
+              <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
+          </div>
         </div>
       </div>
+      <% }); %>
     </div>
-    <% }); %>
-   </div>
   </div>
+
+</div>

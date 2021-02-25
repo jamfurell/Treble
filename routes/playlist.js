@@ -8,6 +8,8 @@ const app = express()
 
 app.use(methodOverride("_method"))
 
+
+// POST show user Homepage
 router.get("/", function (req, res) {
   // console.log("=====This is req.user ==>", req.user, " <=======")
   db.user
@@ -54,7 +56,7 @@ router.get("/:id", (req, res) => {
     })
     .then((playlist) => {
       if (!playlist) throw Error()
-      console.log(playlist.songs)
+      console.log("<=====this is playlist.songs", playlist.songs, "<=========")
       // console.log('In the playlist show route', playlist.name)
       // res.send('this is the playlist show page') 
       res.render("playlist/show", { playlist })
