@@ -138,7 +138,29 @@ router.post("/:id/search", (req, res) => {
 })
 
 
- 
+//GET route for editing playlist name
+router.get('/:id/edit', function(req,res){
+  db.playlist.findOne({
+    where: {
+      id: req.params.id
+    },
+  }).then (function(playlist){
+    res.render('playlist/edit', {playlist})
+  })
+});
+//Put route to update playlist name
+router.put('/:id', function(req, res){
+      db.playlist.update(
+        {
+          name: req.body.playlistName
+        },
+        {
+          where: {id: req.body.playlist}
+        }
+      ).then(function(playlist){
+        res.redirect('/playlist')
+      })
+    })
 
 
 
