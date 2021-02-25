@@ -88,13 +88,15 @@ router.post("/:id/search", (req, res) => {
       where: { id: req.params.id },
     })
     .then(function (playlist) {
+      console.log(req.body)
       db.song
         .findOrCreate({
           where: {
             name: req.body.title,
             artist: req.body.artist,
-            // lastFmId: req.body.songUrl,
+            deezerId: req.body.songUrl,
             album: req.body.album,
+            url: req.body.url
           },
         })
         .then(function ([song, created]) {
