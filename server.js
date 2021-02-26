@@ -28,17 +28,6 @@ app.use(session({
   saveUninitialized: true 
 }))
 
-// app.get('/playlist', (req, res) => {
-  // db.user.findOne({
-  //   where: { id: req.params.id },
-  //   include: [db.playlist]
-  // }).then((user) => {
-  //   console.log(user)
-    // res.send('You are here')
-    // res.render('/playlist/user/:id', { user: user })
-  // })
-// })
-
 // the following two lines must appear after configuring the session
 app.use(passport.initialize())
 app.use(passport.session())
