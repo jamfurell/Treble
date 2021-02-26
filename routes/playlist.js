@@ -2,6 +2,7 @@ const express = require("express");
 const db = require("../models");
 const methodOverride = require("method-override");
 const axios = require("axios");
+const isLoggedIn = require('../middleware/isLoggedIn')
 const user = require("../models/user");
 const router = express.Router();
 
@@ -10,7 +11,7 @@ const app = express();
 app.use(methodOverride("_method"));
 
 // GET show user Homepage
-router.get("/", function (req, res) {
+router.get("/", isLoggedIn, function (req, res) {
   db.user
     .findOne({
       where: { id: req.user.id },
@@ -24,7 +25,7 @@ router.get("/", function (req, res) {
 });
 
 // POST create a new playlist
-router.post("/", (req, res) => {
+router.post("/", isLoggedIn, (req, res) => {
   db.user
     .findOne({
       where: { id: req.user.id },
@@ -45,7 +46,7 @@ router.post("/", (req, res) => {
 });
 
 // GET a specific playlist
-router.get("/:id", (req, res) => {
+router.get("/:id", isLoggedIn, (req, res) => {
   db.playlist
     .findOne({
       where: { id: req.params.id },
@@ -61,7 +62,7 @@ router.get("/:id", (req, res) => {
 });
 
 // GET songs from the API to display on the playlist show page
-router.get("/:id/search", function (req, res) {
+router.get("/:id/search", isLoggedIn, function (req, res) {
   db.playlist
     .findOne({
       where: { id: req.params.id },
@@ -82,7 +83,7 @@ router.get("/:id/search", function (req, res) {
 });
 
 // POST associate a song with a playlist
-router.post("/:id/search", (req, res) => {
+router.post("/:id/search", isLoggedIn, (req, res) => {
   db.playlist
     .findOne({
       where: { id: req.params.id },
@@ -108,7 +109,7 @@ router.post("/:id/search", (req, res) => {
 });
  
 //Put route to update playlist name
-router.put("/:id", function (req, res) {
+router.put("/:id", isLoggedIn, function (req, res) {
   db.playlist
     .update(
       {
@@ -124,7 +125,7 @@ router.put("/:id", function (req, res) {
 });
 
 // DELETE playlist
-router.delete("/:id", function (req, res) {
+router.delete("/:id", isLoggedIn, function (req, res) {
   console.log("In the delete route");
   db.playlist
     .destroy({
@@ -136,7 +137,7 @@ router.delete("/:id", function (req, res) {
 });
 
 // DELETE song
-router.delete("/:id/song", function (req, res) {
+router.delete("/:id/song", isLoggedIn, function (req, res) {
   db.playlistsSongs
     .destroy({
       where: {
