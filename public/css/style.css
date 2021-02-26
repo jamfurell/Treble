@@ -12,6 +12,9 @@ body{
   -webkit-background-image: linear-gradient(rgb(22, 21, 21),rgb(95, 94, 94)); 
   -webkit-background-repeat: no-repeat; */
 }
+.content{
+  margin-top: 6vh;
+}
 h1, h2, h3{
   /* color: rgb(159, 92, 221); */
   color: white;
@@ -22,9 +25,9 @@ h1, h2, h3{
 }
 nav{
   /* background-image: linear-gradient(rgb(22, 21, 21),rgb(95, 94, 94)); */
-  background-color: rgb(34, 37, 31)
-  border-bottom: solid 2px rgb(126, 124, 124);
-  margin-bottom: 10px;
+  background-color: rgb(34, 37, 31);
+  /* border-bottom: solid 2px rgb(126, 124, 124); */
+  /* margin-bottom: 10px; */
 }
 .navbar-nav{
   display: flex; 

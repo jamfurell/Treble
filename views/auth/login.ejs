@@ -1,21 +1,15 @@
-
-
-<main class="container-fluid"> 
-  <div class="row content"> 
-
-
-    <div class="col-sm-7"> 
-        <img style="border-radius: 15%" class="img-fluid" src="../images/girl-headphone.svg">
+<main class="container-fluid">
+  <div style="display:flex" class="row content justify-content-center">
+    <div style="max-width: 40%; text-align: center" class="col-sm-6">
+        <img style="border-radius: 15%; max-width:80%; max-height:100%" class="img-fluid" src="../images/girl-headphone.svg">
     </div>
-      
-
-    <div class="col-sm-5 logo-login">
-      <div style="display:flex; flex-direction:column"> 
+    <div style="height: 53vh; width: 37vw"  class="col-sm-6 logo-login">
+      <div style="display:flex; flex-direction:column">
               <div class="treble-logo">
                 <img class="img-fluid" src="../images/Treble_Logo.png ">
               </div>
               <div class="login-form">
-                <div style="display:flex; justify-content:center"> 
+                <div style="display:flex; justify-content:center">
                   <form action="/auth/login" method="POST">
                     <div class="col-md-12">
                       <label for="auth-email">Email</label>
@@ -28,11 +22,8 @@
                       <input style="text-align:center" type="submit" class="btn btn-primary" value="Log In">
                   </form>
                 </div>
-              </div>            
-
+              </div>
       </div>
     </div>
-
-
   </div>
 </main>

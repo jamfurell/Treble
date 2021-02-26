@@ -1,31 +1,31 @@
-<div class="container-fluid">
-  <div class="col">
-      <!-- <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css"> -->
+<div class="container-fluid content">
+  <div style="text-align:center" class="row justify-content-center">
+    <form class="form-signin" action="/auth/signup" method="POST"></form>
+      <div class="col-md-4">
+        <img class="mb-4" src="../images/Treble_Logo.png" alt="" width=".2erm" height="100">
+        <h1 class="h3 mb-3 font-weight-normal">Create A New Account</h1>
 
+        <div class="form-label-group">
+          <label for="new-name">Username</label>
+          <input type="text" id="new-name" name="name" class="form-control" placeholder="Username" required="" autofocus="">
+        </div>
 
-        <form class="form-signin" action="/auth/signup" method="POST">
-          <div class="text-center mb-4">
-            <img class="mb-4" src="../images/Treble_Logo.png" alt="" width=".2erm" height="100">
-            <h1 class="h3 mb-3 font-weight-normal">Create A New Account</h1>
-          </div>
+        <div class="form-label-group">
+          <label for="new-email">Email address</label>
+          <input type="email" id="new-email" name="email" class="form-control" placeholder="Email address" required="" autofocus="">
+        </div>
 
-          <div class="form-label-group">
-            <label for="new-name">Username</label>
-            <input type="text" id="new-name" name="name" class="form-control" placeholder="Username" required="" autofocus="">
-          </div>
+        <div class="form-label-group">
+          <label for="new-password">Password</label>
+          <input type="password" id="new-password" class="form-control" placeholder="Password" name="password" required="">
+        </div>
 
-          <div class="form-label-group">
-            <label for="new-email">Email address</label>
-            <input type="email" id="new-email" name="email" class="form-control" placeholder="Email address" required="" autofocus="">
-          </div>
-
-          <div class="form-label-group">
-            <label for="new-password">Password</label>
-            <input type="password" id="new-password" class="form-control" placeholder="Password" name="password" required="">
-          </div>
-
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Create New Account</button>
-          <p class="mt-5 mb-3 text-muted text-center">Treble© 2021</p>
-        </form>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Create New Account</button>
+        <p class="mt-5 mb-3 text-muted text-center">Treble© 2021</p>
+    </form>
   </div>
 </div>
+
+
+
+
