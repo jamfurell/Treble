@@ -136,6 +136,18 @@ router.put("/:id", function (req, res) {
 });
 
 // DELETE playlist
+router.delete("/:id", function (req, res) {
+  console.log("In the delete route");
+  db.playlist
+    .destroy({
+      where: { id: req.params.id },
+    })
+    .then(function () {
+      res.redirect("/playlist");
+    });
+});
+
+// DELETE song
 router.delete("/:id/song", function (req, res) {
   db.playlistsSongs
     .destroy({
