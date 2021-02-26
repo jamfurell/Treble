@@ -184,7 +184,7 @@
                 <input
                   hidden
                   type="text"
-                  name="lastFmId"
+                  name="deezerId"
                   value="<%= song.id %>"
                 />
                 <input
@@ -199,6 +199,12 @@
                   name="artist"
                   value="<%= song.artist.name %>"
                 />
+                <input
+                hidden
+                type="text"
+                name="url"
+                value="<%= song.album.cover_big %>"
+              />
                 <input
                   hidden
                   type="text"

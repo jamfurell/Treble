@@ -8,6 +8,21 @@ const app = express()
 
 app.use(methodOverride("_method"))
 
+// POST associate a favorite song with a user
+router.post("/add", (req, res) => {
+  db.usersSongs
+    .findOrCreate({
+      where: { 
+        userId: req.user.id,
+        songId: req.body.songId
+      },
+    })
+    .then(function (usersSongs) {
+      console.log(!usersSongs)
+      res.redirect("back", { usersSongs })
+    })
+});
+
 // GET songs from the API and display on playlist show page
 // router.get('/', function (req, res) {
 //   console.log('In the GET songs route', req.user)

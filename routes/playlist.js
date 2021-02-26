@@ -2,6 +2,7 @@ const express = require("express");
 const db = require("../models");
 const methodOverride = require("method-override");
 const axios = require("axios");
+const user = require("../models/user");
 const router = express.Router();
 
 const app = express();
@@ -93,13 +94,14 @@ router.post("/:id/search", (req, res) => {
           where: {
             name: req.body.title,
             artist: req.body.artist,
-            // lastFmId: req.body.songUrl,
+            deezerId: req.body.deezerId,
             album: req.body.album,
+            url: req.body.url,
           },
         })
         .then(function ([song, created]) {
+          console.log(song)
           playlist.addSongs([song]).then(function (relationInfo) {
-            // res.redirect(`/playlist/${req.params.id}`)
             res.redirect("back");
           });
         });
