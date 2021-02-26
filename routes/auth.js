@@ -17,8 +17,6 @@ router.post('/signup', (req, res) => {
     }
   }).then(([user, created]) => {
     if (created) {
-      // success
-      // console.log(session)
       passport.authenticate('local', {
         successRedirect: '/playlist',
         successFlash: 'Account created and user logged in!'
@@ -39,7 +37,6 @@ router.get('/login', (req, res) => {
   res.render('auth/login');
 });
 
-// +++++++++++++++++++++++++++++++++++++++++++
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/playlist',
   failureRedirect: '/',
