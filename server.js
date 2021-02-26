@@ -1,19 +1,24 @@
-require('dotenv').config();
-const express = require('express');
-const layouts = require('express-ejs-layouts');
-const session = require('express-session');
+require('dotenv').config()
+const express = require('express')
+const layouts = require('express-ejs-layouts')
+const session = require('express-session')
 const flash = require("connect-flash")
-const passport = require('./config/ppConfig');
+const passport = require('./config/ppConfig')
 const isLoggedIn = require('./middleware/isLoggedIn')
+const methodOverride = require("method-override")
+const db = require('./models')
+const expressEjsLayouts = require('express-ejs-layouts')
 
-const app = express();
+const app = express()
 
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs')
 
-app.use(require('morgan')('dev'));
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(__dirname + '/public'));
+app.use(require('morgan')('dev'))
+app.use(express.urlencoded({ extended: false }))
+app.use(express.static(__dirname + '/public'))
+app.use(methodOverride("_method"))
 app.use(layouts);
+
 
 app.use(session({
   // a string used to generate a unique 
@@ -41,7 +46,6 @@ app.use((req, res, next) => {
   next()
 })
 
-
 app.get('/', (req, res) => {
   res.render('index');
 });
@@ -51,6 +55,8 @@ app.get('/profile', isLoggedIn, (req, res) => {
 });
 
 app.use('/auth', require('./routes/auth'));
+app.use('/playlist', require('./routes/playlist'));
+app.use('/songs', require('./routes/songs'));
 
 var server = app.listen(process.env.PORT || 3000, ()=> console.log(`🎧You're listening to the smooth sounds of port ${process.env.PORT || 3000}🎧`));
 

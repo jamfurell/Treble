@@ -17,9 +17,8 @@ router.post('/signup', (req, res) => {
     }
   }).then(([user, created]) => {
     if (created) {
-      // success
       passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/playlist',
         successFlash: 'Account created and user logged in!'
       })(req, res)
     } else {
@@ -39,8 +38,8 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/auth/login',
+  successRedirect: '/playlist',
+  failureRedirect: '/',
   successFlash: 'You have logged in!',
   failureFlash: 'Invalid username and/or password.'
 }))
