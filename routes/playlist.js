@@ -100,6 +100,7 @@ router.post("/:id/search", (req, res) => {
           },
         })
         .then(function ([song, created]) {
+          console.log(song)
           playlist.addSongs([song]).then(function (relationInfo) {
             res.redirect("back");
           });
