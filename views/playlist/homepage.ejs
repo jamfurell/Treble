@@ -1,0 +1,252 @@
+<div class="container">
+  <div class="row justify-content-start">
+    <div class="col-md-3">
+      <button
+        type="button"
+        class="btn btn-success"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        Create a New Playlist
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-plus-circle"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+          />
+          <path
+            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+          />
+        </svg>
+      </button>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Create a New Playlist
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form style="margin: 15px" action="/playlist" method="POST">
+                <div class="form-group text-end">
+                  <div class="col-auto">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="name"
+                      id="createPlaylist"
+                      placeholder="Playlist Name"
+                    />
+                    <small id="emailHelp" class="form-text text-muted"
+                      >Be creative with your naming.</small
+                    >
+                  </div>
+                  <div class="col-auto">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button type="submit" class="btn btn-outline-success">
+                      Create
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if(userInfo.user){ %>
+  <h1 class="text-center" style="padding-bottom: 2rem">
+    Hello <%= userInfo.user.name %>, here are your playlists
+  </h1>
+  <% } %>
+
+  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4">
+    <% userInfo.playlist.forEach(function(playlist) { %>
+    <div class="col">
+      <div
+        class="card"
+        style="height: auto; width: 300px; border: none; margin-bottom: 2rem"
+      >
+        <a
+          class="text-dark"
+          style="text-decoration: none"
+          href="playlist/<%= playlist.id %>"
+        >
+          <img
+            style="max-width: 300px"
+            src="https://upload.wikimedia.org/wikipedia/en/4/40/The_Crystal_Method_Vegas.jpg"
+            class="card-img-top mx-auto"
+            alt="..."
+        /></a>
+        <div
+          class="card-body d-inline-flex text-left"
+          style="padding: 1rem 1rem; font-size: 16px"
+        >
+          <a
+            class="text-dark"
+            style="text-decoration: none"
+            href="playlist/<%= playlist.id %>"
+            ><h5
+              style="
+                width: 200px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin-bottom: 0;
+              "
+              class="card-title text-uppercase"
+            >
+              <%= playlist.name %>
+            </h5>
+          </a>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <!-- Button trigger modal -->
+            <button
+              type="button"
+              class="btn btn-outline-success"
+              style="border: none; padding: 0 0.75rem; border-radius: 0.25rem"
+              data-bs-toggle="modal"
+              data-bs-target="#edit"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-pencil"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"
+                />
+              </svg>
+            </button>
+
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="edit"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="editLabel">
+                      Edit Your Playlist Name
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+
+                  <div class="modal-body">
+                    <form
+                      style="margin: 15px"
+                      method="POST"
+                      action="/playlist/<%= playlist.id %>/?_method=PUT"
+                    >
+                      <div class="form-group text-end">
+                        <div class="col-auto">
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="playlistName"
+                            id="updatePlaylist"
+                            placeholder="<%= playlist.name %>"
+                          />
+                          <small id="emailHelp" class="form-text text-muted"
+                            >Be creative with your naming.</small
+                          >
+                        </div>
+                        <div class="col-auto">
+                          <input
+                            hidden
+                            type="text"
+                            value="<%= playlist.id %>"
+                            name="playlist"
+                          />
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <button type="submit" class="btn btn-outline-success">
+                            Update
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <form
+              method="POST"
+              action="/playlist/<%= playlist.id %>/?_method=DELETE"
+            >
+              <input hidden type="text" name="playlistId" value="delete" />
+              <button
+                class="btn btn-outline-danger"
+                style="border: none; padding: 0 0.75rem"
+                type="submit"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-x-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                  />
+                  <path
+                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                  />
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+</div>
