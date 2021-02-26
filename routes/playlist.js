@@ -2,6 +2,7 @@ const express = require("express");
 const db = require("../models");
 const methodOverride = require("method-override");
 const axios = require("axios");
+const user = require("../models/user");
 const router = express.Router();
 
 const app = express();
@@ -88,20 +89,18 @@ router.post("/:id/search", (req, res) => {
       where: { id: req.params.id },
     })
     .then(function (playlist) {
-      console.log(req.body)
       db.song
         .findOrCreate({
           where: {
             name: req.body.title,
             artist: req.body.artist,
-            deezerId: req.body.songUrl,
+            deezerId: req.body.deezerId,
             album: req.body.album,
-            url: req.body.url
+            url: req.body.url,
           },
         })
         .then(function ([song, created]) {
           playlist.addSongs([song]).then(function (relationInfo) {
-            // res.redirect(`/playlist/${req.params.id}`)
             res.redirect("back");
           });
         });
@@ -137,16 +136,17 @@ router.put("/:id", function (req, res) {
     });
 });
 
-// DELETE playlist 
-router.delete('/:id', function (req, res) {
-  console.log('In the delete route')
+// DELETE playlist
+router.delete("/:id", function (req, res) {
+  console.log("In the delete route");
   db.playlist
-   .destroy({
-    where: { id: req.params.id }
-  }).then(function () {
-   res.redirect('/playlist')
-  })
- })
+    .destroy({
+      where: { id: req.params.id },
+    })
+    .then(function () {
+      res.redirect("/playlist");
+    });
+});
 
 // DELETE song
 router.delete("/:id/song", function (req, res) {
