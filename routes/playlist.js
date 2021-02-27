@@ -36,6 +36,7 @@ router.post("/", isLoggedIn, (req, res) => {
         .findOrCreate({
           where: {
             name: req.body.name,
+            userId: req.user.id
           },
         })
         .then(function ([playlist, created]) {
