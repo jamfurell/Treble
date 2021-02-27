@@ -1,7 +1,5 @@
 {
   "development": {
-    "username": "danieltrejo",
-    "password": "Linuxpass12.!",  
     "database": "treble_database",
     "host": "127.0.0.1",
     "dialect": "postgres"
