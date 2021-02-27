@@ -283,7 +283,7 @@
               class="btn btn-outline-success"
               style="border: none; padding: 0 0.75rem; border-radius: 0.25rem"
               data-bs-toggle="modal"
-              data-bs-target="#edit"
+              data-bs-target="#edit<%= playlist.id %>"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -302,7 +302,7 @@
             <!-- Modal -->
             <div
               class="modal fade"
-              id="edit"
+              id="edit<%= playlist.id %>"
               tabindex="-1"
               aria-labelledby="exampleModalLabel"
               aria-hidden="true"
@@ -310,7 +310,7 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="editLabel">
+                    <h5 class="modal-title" id="edit<%= playlist.id %>Label">
                       Edit Your Playlist Name
                     </h5>
                     <button
