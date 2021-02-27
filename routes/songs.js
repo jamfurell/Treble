@@ -17,7 +17,7 @@ router.post("/add", (req, res) => {
         songId: req.body.songId
       },
     })
-    .then(function (usersSongs) {
+    .then((usersSongs) => {
       console.log(!usersSongs)
       res.redirect("back", { usersSongs })
     })
