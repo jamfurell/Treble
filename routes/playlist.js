@@ -14,9 +14,10 @@ router.get("/", function (req, res) {
   db.user
     .findOne({
       where: { id: req.user.id },
+      include: [db.playlist]
     })
     .then(function (user) {
-      user.getPlaylists().then(function (playlist) {
+      user.getPlaylists({include:[db.song]}).then(function (playlist) {
         const userInfo = { playlist: playlist, user: user };
         res.render("playlist/homepage", { userInfo });
       });
