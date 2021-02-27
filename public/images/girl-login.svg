@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?> <!-- Created with Vectornator for iOS (http://vectornator.io/) --><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg height="100%" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="100%" xmlns:vectornator="http://vectornator.io" version="1.1" viewBox="0 0 768 1024">
+<svg style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" viewBox="0 0 768 1024">
 <metadata>
 <vectornator:setting key="DimensionsVisible" value="1"/>
-<vectornator:setting key="New" value="1"/>
+<vectornator:setting key="SnapToGrid" value="0"/>
 <vectornator:setting key="SnapToPoints" value="0"/>
 <vectornator:setting key="GuidesVisible" value="1"/>
 <vectornator:setting key="RulersVisible" value="1"/>
@@ -13,19 +13,26 @@
 <vectornator:setting key="GridSpacing" value="36"/>
 <vectornator:setting key="Units" value="Pixels"/>
 <vectornator:setting key="DynamicGuides" value="0"/>
-<vectornator:setting key="SnapToGrid" value="0"/>
+<vectornator:setting key="New" value="1"/>
 </metadata>
 <defs>
-<linearGradient y1="525.354" id="LinearGradient" x1="-6.41113" y2="525.354" x2="766.57" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 0 0)">
-<stop stop-opacity="0.94697" stop-color="#dd6500" offset="0.463592"/>
-<stop stop-opacity="0.957071" stop-color="#e98f30" offset="0.927184"/>
+<linearGradient y1="525.354" id="LinearGradient" x1="-6.41113" y2="525.354" x2="766.57" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.35391 0 0 0.973857 -121.395 1.88328)">
+<stop stop-opacity="0.94697" stop-color="#dc6400" offset="0.487864"/>
+<stop stop-opacity="0.957071" stop-color="#ea9234" offset="0.949029"/>
+</linearGradient>
+<linearGradient y1="497.611" id="LinearGradient_2" x1="-93.8454" y2="496.769" x2="854.785" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.09677 0 0 1.09985 -24.2538 -53.6215)">
+<stop stop-opacity="0.94697" stop-color="#dc6400" offset="0.487864"/>
+<stop stop-opacity="0.957071" stop-color="#ea9234" offset="0.949029"/>
 </linearGradient>
 </defs>
 <g id=", Layer 1" vectornator:layerName=", Layer 1">
-<path d="M-5.01902-2.43851L765.178-2.43851C765.947-2.43851+766.57-1.81524+766.57-1.0464L766.57+1051.76C766.57+1052.52+765.947+1053.15+765.178+1053.15L-5.01902+1053.15C-5.78786+1053.15-6.41113+1052.52-6.41113+1051.76L-6.41113-1.0464C-6.41113-1.81524-5.78786-2.43851-5.01902-2.43851Z" opacity="1" fill="url(#LinearGradient)"/>
+<path d="M-128.191-0.491485L914.586-0.491485C915.627-0.491485+916.471+0.115491+916.471+0.864233L916.471+1026.14C916.471+1026.89+915.627+1027.5+914.586+1027.5L-128.191+1027.5C-129.232+1027.5-130.076+1026.89-130.076+1026.14L-130.076+0.864233C-130.076+0.115491-129.232-0.491485-128.191-0.491485Z" opacity="0" fill="url(#LinearGradient)"/>
+</g>
+<g id="Layer 7" vectornator:layerName="Layer 7">
+<path d="M10.52-144.213L778.371-144.213C853.841-144.213+915.022-82.8601+915.022-7.17786L915.022+999.843C915.022+1075.53+853.841+1136.88+778.371+1136.88L10.52+1136.88C-64.9503+1136.88-126.131+1075.53-126.131+999.843L-126.131-7.17786C-126.131-82.8601-64.9503-144.213+10.52-144.213Z" opacity="1" fill="url(#LinearGradient_2)"/>
 </g>
 <g id="Layer 4" vectornator:layerName="Layer 4">
-<path d="M33.4156+534.847C33.4156+348.678+184.961+197.759+371.903+197.759C558.844+197.759+710.39+348.678+710.39+534.847C710.39+721.016+558.844+871.935+371.903+871.935C184.961+871.935+33.4156+721.016+33.4156+534.847Z" fill-opacity="0.439394" fill="#f59443" opacity="1"/>
+<path d="M371.906+197.75C184.965+197.75+33.4062+348.675+33.4062+534.844C33.4063+721.013+184.965+871.938+371.906+871.938C558.847+871.938+710.375+721.013+710.375+534.844C710.375+348.675+558.848+197.75+371.906+197.75Z" fill-opacity="0.439394" fill="#f59443" opacity="1"/>
 </g>
 <g id=": Layer 4" vectornator:layerName=": Layer 4">
 <path d="M-2.00265+795.629C22.3098+901.823+132.89+969.097+238.666+944.664C238.647+943.123+242.002+935.313+238.593+936.719C143.282+949.286+56.822+882.49+40.8454+789.332C28.3918+788.72+12.028+793.898-2.00265+795.629" opacity="1" fill="#edb806"/>
@@ -41,7 +48,6 @@
 <path d="M140.433+719.416C158.659+781.169+124.627+860.301+179.684+909.146C128.023+861.318+166.23+781.093+148.66+719.726C146.335+719.061+143.13+719.578+140.433+719.416" opacity="1" fill="#fdfcff"/>
 <path d="M93.4726+583.544C116.162+607.413+119.041+641.956+135.593+669.295C122.543+643.063+123.434+604.052+100.786+579.889C98.2506+580.906+95.8762+582.258+93.4726+583.544" opacity="1" fill="#fdfcff"/>
 <path d="M133.199+586.551C218.408+643.55+236.694+757.797+323.874+810.825C241.183+759.784+225.902+639.917+141.259+583.517C138.992+582.171+135.831+585.805+133.199+586.551" opacity="1" fill="#fdfcff"/>
-<path d="M644.245+455.492C645.567+456.042+646.888+456.61+648.206+457.197C646.944+456.609+645.68+456.038+644.415+455.483" opacity="1" fill="#fdfcff"/>
 <path d="M164.383+400.115C145.095+403.017+126.641+414.062+114.537+429.385C123.903+413.971+160.805+417.048+164.383+400.115" opacity="1" fill="#fdfcff"/>
 <path d="M152.224+423.937C159.654+436.277+156.296+450.946+149.828+462.894C158.527+457.824+173.943+419.972+152.224+423.937" opacity="1" fill="#fdfcff"/>
 <path d="M256.249+471.93C274.848+480.727+293.63+485.725+312.546+488.041C407.902+499.718+506.692+443.256+602.863+461.803C496.349+434.372+375.352+516.628+268.859+465.383C262.353+463.054+256.901+464.035+256.249+471.93" opacity="1" fill="#fdfcff"/>
@@ -57,7 +63,6 @@
 <path d="M245.865+460.297C322.41+501.364+414.931+501.402+492.109+460.065C421.116+490.162+330.815+505.211+260.425+458.777C255.586+458.099+247.68+453.476+245.865+460.297" opacity="1" fill="#212123"/>
 <path d="M251.356+469.625C371.298+576.281+542.872+414.384+668.511+504.795C671.384+504.61+664.502+498.713+663.534+497.006C534.287+422.467+373.07+562.96+251.356+469.625" opacity="1" fill="#212123"/>
 <path d="M257.857+492.611C259.792+499.294+264.334+504.939+270.58+508.084C381.08+555.425+520.664+483.132+616.768+574.902C644.656+589.477+666.49+616.446+687.705+636.525C667.267+610.943+643.37+587.255+614.768+570.913C516.494+473.953+362.308+562.791+257.857+492.611" opacity="1" fill="#070707"/>
-<path d="M855.861+5.13333C857.855-7.47186+845.883+2.46619+855.861+5.13333" opacity="1" fill="#4d4c4f"/>
 </g>
 <g id="Layer 2" vectornator:layerName="Layer 2">
 <path d="M178.221+422.078C221.68+416.556+219.666+483.45+250.617+499.692C231.822+514.953+242.122+515.986+253.396+499.036C220.809+477.219+229.872+402.751+176.776+411.117C175.293+414.494+177.942+418.482+178.221+422.078" opacity="1" fill="#212123"/>
