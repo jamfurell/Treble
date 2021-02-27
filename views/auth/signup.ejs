@@ -1,5 +1,18 @@
+<nav class="navbar sticky-top navbar-inverse navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src="/images/Treble_Logo.png" width="150" height="60" alt="">
+    </a>
+    <ul class="nav">
+      <li class="nav-item nav-pills nav-fill">
+        <a class="nav-link" href="/">Log In</a>
+      </li>
+     </ul>
+  </div>
+</nav>
+
 <div class="container-fluid content">
-  <div style="text-align:center" class="col d-flex justify-content-center">
+  <div class="col d-flex justify-content-center signup-form">
     <form class="form-signin" action="/auth/signup" method="POST">
       <div class="col-md-12">
         <img class="mb-4" src="../images/Treble_Logo.png" alt="" width=".2erm" height="100">
@@ -16,7 +29,7 @@
           <label for="new-password">Password</label>
           <input type="password" id="new-password" class="form-control" placeholder="Password" name="password" required="">
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Create New Account</button>
+        <button class="btn btn-lg btn-primary home-btn" type="submit">Create New Account</button>
         <p class="mt-5 mb-3 text-muted text-center">Treble© 2021</p>
      </form>
     </div>
