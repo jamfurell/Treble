@@ -1,4 +1,20 @@
-<div class="container-fluid">
+<nav class="navbar sticky-top navbar-inverse navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src="/images/Treble_Logo.png" width="150" height="60" alt="">
+    </a>
+    <ul class="nav">
+      <li class="nav-item nav-pills nav-fill">
+        <a class="nav-link" href="/playlist">View Playlists</a>
+      </li>
+      <li class="nav-item nav-pills nav-fill">
+        <a class="nav-link" href="/auth/logout">Logout</a>
+      </li>
+     </ul>
+  </div>
+</nav>
+
+<div class="container-fluid content">
   <div class="row">
     <div class="col">
       <h1 class="text-capitalize"><%= playlist.name %></h1> 
