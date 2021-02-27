@@ -1,9 +1,15 @@
 <div class="container">
   <div class="row justify-content-start">
+    <% if (userInfo.playlist.length> 0) { %>
     <h1 class="text-start" style="padding-bottom: 0rem; padding-top: 1rem">
       Welcome,<span class="text-capitalize"> <%= userInfo.user.name %> </span>!
       Explore Your Playlists:
     </h1>
+    <% } else { %>
+    <h1 class="text-start" style="padding-bottom: 0rem; padding-top: 1rem">
+      You Don't Have Any Playlists. Let's Get Started!
+    </h1>
+    <% } %>
     <div class="col-md-3">
       <button
         type="button"
