@@ -1,16 +1,39 @@
-# Express Authentication
+# TREBLE
 
-Express authentication template using Passport + flash messages + custom middleware
+## PREVIEW 
+![USER PLAYLIST PAGE](https://user-images.githubusercontent.com/74464186/109404547-1ac38b00-791c-11eb-9ed4-2a8210c52f90.png| width=400)
+![SEARCH SONG PAGE](https://user-images.githubusercontent.com/74464186/109404552-21ea9900-791c-11eb-80a6-9db6030b97d1.png| width=400)
 
-## What it includes
 
-* Sequelize user model / migration
-* Settings for PostgreSQL
-* Passport and passport-local for authentication
-* Sessions to keep user logged in between pages
-* Flash messages for errors and successes
-* Passwords that are hashed with BCrypt
+## ORIGINAL WIREFRAMES
+![Treble-Wireframes](https://user-images.githubusercontent.com/76925728/109405151-6aa55080-7922-11eb-8b1c-ae60238a95f2.PNG| width=400)
+
+## PROJECT OVERVIEW 
+HERE'S A BRIEF SUMMARY OF OUR APP
+
+## USER STORIES
+
+## BASIC LAYOUT
+
+### Languages Written In
+Node
+EJS
+HTML5
+CSS3
+Bootstrap
+
+### LIST OF TECHNOLOGIES USED
+Our team used all the technologies noted below to successfully run various functions in our app.  
+* Axios
+* BCrypt
+* Connect-flash
 * EJS Templating and EJS Layouts
+* Morgan
+* PostgreSQL
+* Passport and passport-local 
+* Sequelize and Sequelize-cli
+* Sessions
+For example, BCrypt was used to hash user passwords and store them securely in the database. Passport and passport-local was used to authenticate the users when signing in, allowing users access to their playlists with sessions storing the user’s ID.
 
 ### User Model
 
@@ -23,85 +46,90 @@ Express authentication template using Passport + flash messages + custom middlew
 | createdAt | Date | Auto-generated |
 | updatedAt | Date | Auto-generated |
 
-### Default Routes
+### Playlist Model
 
-| Method | Path | Location | Purpose |
-| ------ | ---------------- | -------------- | ------------------- |
-| GET | / | server.js | Home page |
-| GET | /auth/login | auth.js | Login form |
-| GET | /auth/signup | auth.js | Signup form |
-| POST | /auth/login | auth.js | Login user |
-| POST | /auth/signup | auth.js | Creates User |
-| GET | /auth/logout | auth.js | Removes session info |
-| GET | /profile | server.js | Regular User Profile |
+| Column Name | Data Type | Notes |
+| --------------- | ------------- | ------------------------------ |
+| id | Integer | Serial Primary Key, Auto-generated |
+| name | String | Must be provided |
+| userId | integer | Foreign Key, Pulled from user DB |
+| createdAt | Date | Auto-generated |
+| updatedAt | Date | Auto-generated |
 
-## Steps To Use
+### Song Model
 
-#### 1. Create a new repo on Github and use your 'express-authentication' as the template
+| Column Name | Data Type | Notes |
+| --------------- | ------------- | ------------------------------ |
+| id | Integer | Serial Primary Key, Auto-generated |
+| name | String | Pulled from Deezer API |
+| artist | String | Pulled from Deezer API |
+| album | String | Pulled from Deezer API |
+| deezerId | String | Pulled from Deezer API |
+| url | String | Pulled from Deezer API |
+| createdAt | Date | Auto-generated |
+| updatedAt | Date | Auto-generated |
 
-When we are finished with this boilerplate, we are going to make it a template on Github that will allow us to create a new repo on Github with all this code already loaded in.
-* Go to `github.com` and create a new repository. In the template dropdown, choose this template.
-* Clone your new repo to your local machine
-* Get Codin'!
+### PLAYLISTSSONGS (JOIN) TABLE 
 
-#### 2. Delete any .keep files
+Column Name | Data Type | Notes |
+| ---------------- | ------------- | -------------- |
+| playlistId | Integer | Foreign Key, Pulled from User DB |
+| songId | Integer | Foreign Key, Pulled from Snack DB |
 
-The `.keep` files are there to maintain the file structure of the auth. If there is a folder that has nothing in it, git won't add it. The dev work around is to add a file to it that has nothing in it, just forces git to keep the folder so we can use it later.
 
-#### 3. Install node modules from the package.json
+## INSTALLATION INSTRUCTIONS
+
+#### 1. FORK AND CLONE RESPOSITORY TO YOUR GITHUB AND LOCAL REPOSITORY
+
+#### 2. OPEN REPOSITORY AND RUN NPM INSTALL
 
 ```
 npm install
 ```
-
 (Or just `npm i` for short)
 
-#### 4. Customize with new project name
-
-Remove defaulty type stuff. Some areas to consider are:
-
-* Title in `layout.ejs`
-* Description/Repo Link in `package.json`
-* Remove boilerplate's README content and replace with new project's readme
-
-#### 5. Create a new database for the new project
-
-Using the sequelize command line interface, you can create a new database from the terminal.
+#### 3. CREATE NEW DATABASE NAMED: treble_database
+RUN THE FOLLOWING CODE:
 
 ```
-createdb <new_db_name>
+createdb: treble_database
 ```
 
-#### 6. Update `config.json`
-
-* Change the database name
-* Other settings are likely okay, but check username, password, and dialect
-
-#### 7. Check the models and migrations for relevance to your project's needs
-
-For example, if your project requires a birthdate field, then don't add that in there. 
-
-> When changing your models, update both the model and the migration.
-
-#### 8. Run the migrations
+#### 4. RUN THE MIGRATION
 
 ```
 sequelize db:migrate
 ```
 
-#### 9. Add a `.env` file with the following fields:
-
-* SESSION_SECRET: Can be any random string; usually a hash in production
-* PORT: Usually 3000 or 8000
-
-#### 10. Run server; make sure it works
+#### 5. CREAT A '.env' FILE AND INCLUDE THE FOLLOWING FIELD INSIDE
 
 ```
-nodemon
+SESSION_SECRET:<any_random_string>
 ```
 
-or
+### EXISTING FEATURE
+Treble is a full stacked application that encompasses all the CRUD functionalities. 
 
-```
-node index.js
-```
+| VERB | URL | Action (CRUD) | Description |
+|------|-----|---------------|-------------|
+| GET | /playlist | Index (Read) | lists all playlists associated with user |
+| GET | /auth/signup | New (Read) | shows a form to create a new user account|
+| POST | /playlist | Create (Create) | creates a playlist with the POST data |
+| GET | /playlist/:id | Show (Read) | list information about a specific playlist (i.e. /playlist/1) |
+| GET | /playlist/:id/edit | Edit (Read) | shows a form for editting a specific playlist name (i.e. /playlist/edit/1)|
+| PUT | /playlist/:id | Update (Update) | updates the data for a specific playlist (i.e. /playlist/1) |
+| DELETE | /playlist/:id | Destroy (Delete) | deletes the playlist with the specified id (i.e. /playlist/1) |
+
+## CODE CAPTURE
+
+## ARISING PROBLEM
+Our group originally planned on using the lastFM API to fetch data for songs but we found that we could not access the album artwork/image. Thankfully, we were able to find another API (deezer API) that provided all the information we needed for our application. 
+Our application primarily used BOOTSTRAP to style our page but there were times where style cutomization proved to be difficult. 
+
+### About Us
+
+### Contributor Githubs
+https://github.com/r-mckeith
+https://github.com/rauldtrejo
+https://github.com/jamfurell
+
