@@ -1,12 +1,12 @@
 # TREBLE
 
 ## PREVIEW 
-![USER PLAYLIST PAGE](https://user-images.githubusercontent.com/74464186/109404547-1ac38b00-791c-11eb-9ed4-2a8210c52f90.png| width=400)
-![SEARCH SONG PAGE](https://user-images.githubusercontent.com/74464186/109404552-21ea9900-791c-11eb-80a6-9db6030b97d1.png| width=400)
+![USER PLAYLIST PAGE](https://user-images.githubusercontent.com/74464186/109404547-1ac38b00-791c-11eb-9ed4-2a8210c52f90.png | width=400)
+![SEARCH SONG PAGE](https://user-images.githubusercontent.com/74464186/109404552-21ea9900-791c-11eb-80a6-9db6030b97d1.png | width=400)
 
 
 ## ORIGINAL WIREFRAMES
-![Treble-Wireframes](https://user-images.githubusercontent.com/76925728/109405151-6aa55080-7922-11eb-8b1c-ae60238a95f2.PNG| width=400)
+![Treble-Wireframes](https://user-images.githubusercontent.com/76925728/109405151-6aa55080-7922-11eb-8b1c-ae60238a95f2.PNG | width=400)
 
 ## PROJECT OVERVIEW 
 HERE'S A BRIEF SUMMARY OF OUR APP
@@ -129,7 +129,7 @@ Our application primarily used BOOTSTRAP to style our page but there were times 
 ### About Us
 
 ### Contributor Githubs
-https://github.com/r-mckeith
-https://github.com/rauldtrejo
-https://github.com/jamfurell
+* https://github.com/r-mckeith
+* https://github.com/rauldtrejo
+* https://github.com/jamfurell
 
