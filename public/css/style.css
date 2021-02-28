@@ -1,60 +1,124 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
-body{
+body {
   height: 100vh;
-  box-sizing:border-box;
+  box-sizing: border-box;
   background-color: rgba(239, 141, 52, 0.966);
   background-repeat: no-repeat;
   background-size: cover;
 }
-.content{
+.content {
   margin-top: 3vh;
 }
-h1, h2, h3{
+h1,
+h2,
+h3 {
   color: white;
 }
 
-nav{
+nav {
   background-color: rgb(34, 37, 31);
 }
-.nav-item{
+.nav-item {
   border: 1px solid rgba(235, 232, 230, 0.664);
   border-radius: 5px;
   margin: auto 5px;
 }
-.nav-fill{
-  background:rgba(223, 223, 222, 0);
+.nav-fill {
+  background: rgba(223, 223, 222, 0);
   border-radius: 5px;
   transition: opacity 0.7s ease;
 }
-.nav-fill:hover{
-  background: rgba(223, 223, 222, 0.981)
+.nav-fill:hover {
+  background: rgba(223, 223, 222, 0.981);
 }
-main{
-  display:flex; 
-  flex-direction:row;
-  text-align:center;
+main {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
 }
-.signup-form{
-  text-align:center;
+.signup-form {
+  text-align: center;
 }
-.login-form{
-  height: 53vh; 
-  width: 37vw; 
-  display:flex; 
-  flex-direction:column
+.login-form {
+  height: 53vh;
+  width: 37vw;
+  display: flex;
+  flex-direction: column;
 }
-#girl-logo{
-  border-radius:20%;
-  max-width:80%;
-  max-height:75%;
+#girl-logo {
+  border-radius: 20%;
+  max-width: 80%;
+  max-height: 75%;
 }
-.home-btn{
-  margin-top: 5px
+.home-btn {
+  margin-top: 5px;
 }
-.login-logo{
-  text-align:right;
+.login-logo {
+  text-align: right;
+}
+
+.homepage-h1-title {
+  padding-bottom: 0rem;
+  padding-top: 1rem;
+}
+
+.homepage-playlist-card {
+  height: auto;
+  width: 300px;
+  border: none;
+  margin-bottom: 2rem;
+  box-shadow: 15px 15px 10px #0000006b;
+}
+
+.playlist-AlbumArt-1 {
+  max-width: 300px;
+  border-radius: 0;
+}
+
+.playlist-AlbumArt-2orMore {
+  max-width: 150px;
+  border-radius: 0;
+}
+
+.margin-0-padding-0 {
+  margin: 0;
+  padding: 0;
+}
+
+.margin-0-padding-0-border-0 {
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+.homepage-card-body {
+  padding: 1rem 1rem;
+  font-size: 16px;
+}
+
+.h5-EllipseHidden {
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+}
+
+.edit-modal {
+  border: none;
+  padding: 0 0.75rem;
+  border-radius: 0.25rem;
+}
+
+.delete-btn-homepage {
+  border: none;
+  padding: 0 0.75rem;
+}
+.create-new-playlist {
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
 }
