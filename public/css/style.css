@@ -122,3 +122,35 @@ main {
   margin-top: 0.5rem;
   margin-bottom: 2rem;
 }
+
+.playlist-Table-EllipseHidden {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.delete-btn-svg {
+  border: none;
+  background-color: transparent;
+  color: white;
+}
+
+.searchResult-card {
+  height: auto;
+  width: 300px;
+  border: none;
+  margin-bottom: 2rem;
+}
+
+.searchResult-cardText {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.searchResult-cardBody {
+  padding: 1rem 1rem;
+  font-size: 16px;
+}
