@@ -54,6 +54,11 @@ main {
   max-width: 80%;
   max-height: 75%;
 }
+
+.login-logo{	
+  text-align:right;	
+}
+
 .home-btn {
   margin-top: 5px;
 }
