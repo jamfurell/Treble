@@ -25,7 +25,7 @@
             <th scope="col">Title</th>
             <th scope="col">Artist</th>
             <th scope="col">Album</th>
-            <th style="text-align: center" scope="col"></th>
+            <th style="text-align: center;" scope="col"></th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -33,32 +33,17 @@
           <% playlist.songs.forEach(function(song){ %>
           <tr>
             <td
-              style="
-                max-width: 200px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              "
+         class="playlist-Table-EllipseHidden"
             >
               <%= song.name %>
             </td>
             <td
-              style="
-                max-width: 200px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              "
+          class="playlist-Table-EllipseHidden"
             >
               <%= song.artist %>
             </td>
             <td
-              style="
-                max-width: 200px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              "
+         class="playlist-Table-EllipseHidden"
             >
               <%= song.album %>
             </td>
@@ -88,11 +73,7 @@
                   value="<%= song.id %>"
                 />
                 <button
-                  style="
-                    border: none;
-                    background-color: transparent;
-                    color: white;
-                  "
+                  class="delete-btn-svg "
                   type="submit"
                 >
                   <svg
@@ -122,7 +103,7 @@
       <% } %>
     </div>
     <div class="col">
-      <h3 style="color: white">Add New Songs To <span class="text-capitalize"><%= playlist.name %></h3></span>
+      <h3>Add New Songs To <span class="text-capitalize"><%= playlist.name %></h3></span>
       <form
         class="row g-3"
         style="margin-bottom: 1rem"
@@ -149,54 +130,30 @@
         <% songs.forEach(function(song) { %>
         <div class="col">
           <div
-            class="card"
-            style="
-              height: auto;
-              width: 300px;
-              border: none;
-              margin-bottom: 2rem;
-            "
+            class="card searchResult-card"
           >
             <img
-              style="max-width: 300px"
+              style="max-width: 300px;"
               src="<%=song.album.cover_xl%>"
               class="card-img-top mx-auto"
               alt="..."
             />
             <div
-              class="card-body text-left"
-              style="padding: 1rem 1rem; font-size: 16px"
+              class="card-body text-left searchResult-cardBody"
+
             >
               <h5
-                class="card-title"
-                style="
-                  width: 250px;
-                  white-space: nowrap;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                "
+                class="card-title searchResult-cardText"
               >
                 <%= song.title %>
               </h5>
               <p
-                class="card-subtitle"
-                style="
-                  width: 250px;
-                  white-space: nowrap;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                "
+                class="card-subtitle searchResult-cardText"
               >
                 <%= song.artist.name %>
               </p>
               <p
-                class="card-text"
-                style="
-                  width: 250px;
-                  white-space: nowrap;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                "
+                class="card-text searchResult-cardText"
               >
                 <%= song.album.title %>
               </p>
