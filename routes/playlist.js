@@ -2,7 +2,7 @@ const express = require("express");
 const db = require("../models");
 const methodOverride = require("method-override");
 const axios = require("axios");
-const isLoggedIn = require('../middleware/isLoggedIn')
+const isLoggedIn = require("../middleware/isLoggedIn");
 const user = require("../models/user");
 const router = express.Router();
 
@@ -15,10 +15,10 @@ router.get("/", isLoggedIn, (req, res) => {
   db.user
     .findOne({
       where: { id: req.user.id },
-      include: [db.playlist]
+      include: [db.playlist],
     })
     .then((user) => {
-      user.getPlaylists({include:[db.song]}).then((playlist) => {
+      user.getPlaylists({ include: [db.song] }).then((playlist) => {
         const userInfo = { playlist: playlist, user: user };
         res.render("playlist/homepage", { userInfo });
       });
@@ -36,7 +36,7 @@ router.post("/", isLoggedIn, (req, res) => {
         .findOrCreate({
           where: {
             name: req.body.name,
-            userId: req.user.id
+            userId: req.user.id,
           },
         })
         .then(([playlist, created]) => {
@@ -102,14 +102,14 @@ router.post("/:id/search", isLoggedIn, (req, res) => {
           },
         })
         .then(([song, created]) => {
-          console.log(song)
+          console.log(song);
           playlist.addSongs([song]).then((relationInfo) => {
             res.redirect("back");
           });
         });
     });
 });
- 
+
 //Put route to update playlist name
 router.put("/:id", isLoggedIn, (req, res) => {
   db.playlist
