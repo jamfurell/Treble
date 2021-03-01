@@ -1,4 +1,5 @@
 # TREBLE
+([click here for the link to our project hosted on Heroku!](https://treble-music.herokuapp.com/))
 
 ### PREVIEW 
 ![USER PLAYLIST PAGE](https://user-images.githubusercontent.com/74464186/109404547-1ac38b00-791c-11eb-9ed4-2a8210c52f90.png)
@@ -30,7 +31,6 @@ Our team used all the technologies noted below to successfully run various funct
 * Passport and passport-local 
 * Sequelize and Sequelize-cli
 * Sessions
-For example, BCrypt was used to hash user passwords and store them securely in the database. Passport and passport-local was used to authenticate the users when signing in, allowing users access to their playlists with sessions storing the user’s ID.
 
 #### User Model
 
@@ -70,8 +70,9 @@ For example, BCrypt was used to hash user passwords and store them securely in t
 
 Column Name | Data Type | Notes |
 | ---------------- | ------------- | -------------- |
-| playlistId | Integer | Foreign Key, Pulled from User DB |
-| songId | Integer | Foreign Key, Pulled from Snack DB |
+| id | Integer | Serial Primary Key, Auto-generated |
+| playlistId | Integer | Foreign Key, Pulled from Playlist DB |
+| songId | Integer | Foreign Key, Pulled from Song DB |
 
 
 ### INSTALLATION INSTRUCTIONS
@@ -101,7 +102,7 @@ sequelize db:migrate
 ##### 5. CREAT A '.env' FILE AND INCLUDE THE FOLLOWING FIELD INSIDE
 
 ```
-SESSION_SECRET:<any_random_string>
+SESSION_SECRET=<any_random_string>
 ```
 
 #### EXISTING FEATURE
@@ -109,21 +110,22 @@ Treble is a full stacked application that encompasses all the CRUD functionaliti
 
 | VERB | URL | Action (CRUD) | Description |
 |------|-----|---------------|-------------|
-| GET | /playlist | Index (Read) | lists all playlists associated with user |
+| GET | /playlist | Index (Read) | lists all playlists associated with user|
+| GET | /playlist/:id | Index (Read) | lists all songs associated with a specific playlist |
+| GET | /playlist/:id/search | Index (Read) | lists all songs fetched from API|
 | GET | /auth/signup | New (Read) | shows a form to create a new user account|
-| POST | /playlist | Create (Create) | creates a playlist with the POST data |
-| GET | /playlist/:id | Show (Read) | list information about a specific playlist (i.e. /playlist/1) |
+| POST | /playlist | Create (Create) | creates a playlist with the POST data|
+| POST | /signup | Create (Create) | creates a new user with the POST data|
+| GET | /playlist/:id | Show (Read) | list information about a specific playlist (i.e. /playlist/1)|
 | GET | /playlist/:id/edit | Edit (Read) | shows a form for editting a specific playlist name (i.e. /playlist/edit/1)|
-| PUT | /playlist/:id | Update (Update) | updates the data for a specific playlist (i.e. /playlist/1) |
-| DELETE | /playlist/:id | Destroy (Delete) | deletes the playlist with the specified id (i.e. /playlist/1) |
+| PUT | /playlist/:id | Update (Update) | updates the data for a specific playlist (i.e. /playlist/1)|
+| DELETE | /playlist/:id | Destroy (Delete) | deletes the playlist with the specified id (i.e. /playlist/1)|
 
-### CODE CAPTURE
 
 ### ARISING PROBLEM
 Our group originally planned on using the lastFM API to fetch data for songs but we found that we could not access the album artwork/image. Thankfully, we were able to find another API (deezer API) that provided all the information we needed for our application. 
 Our application primarily used BOOTSTRAP to style our page but there were times where style cutomization proved to be difficult. 
 
-#### About Us
 
 #### Contributor Githubs
 * https://github.com/r-mckeith
