@@ -1,7 +1,7 @@
 <nav class="navbar sticky-top navbar-inverse navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/playlist">
-      <img src="/images/Treble_Logo.png" width="150" height="60" alt="">
+      <img src="/images/Treble_Logo.png" width="150" height="60" alt="" />
     </a>
     <ul class="nav">
       <li class="nav-item nav-pills nav-fill">
@@ -10,14 +10,14 @@
       <li class="nav-item nav-pills nav-fill">
         <a class="nav-link" href="/auth/logout">Logout</a>
       </li>
-     </ul>
+    </ul>
   </div>
 </nav>
 
 <div class="container-fluid content">
   <div class="row">
     <div class="col">
-      <h1 class ="text-capitalize"><%= playlist.name %></h1>
+      <h1 class="text-capitalize"><%= playlist.name %></h1>
       <% if (playlist.songs.length > 0) { %>
       <table class="table table-hover table-dark table-striped">
         <thead>
@@ -32,36 +32,9 @@
         <tbody>
           <% playlist.songs.forEach(function(song){ %>
           <tr>
-            <td
-              style="
-                max-width: 200px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              "
-            >
-              <%= song.name %>
-            </td>
-            <td
-              style="
-                max-width: 200px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              "
-            >
-              <%= song.artist %>
-            </td>
-            <td
-              style="
-                max-width: 200px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              "
-            >
-              <%= song.album %>
-            </td>
+            <td class="playlist-Table-EllipseHidden"><%= song.name %></td>
+            <td class="playlist-Table-EllipseHidden"><%= song.artist %></td>
+            <td class="playlist-Table-EllipseHidden"><%= song.album %></td>
             <td style="text-align: center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -87,14 +60,7 @@
                   name="songId"
                   value="<%= song.id %>"
                 />
-                <button
-                  style="
-                    border: none;
-                    background-color: transparent;
-                    color: white;
-                  "
-                  type="submit"
-                >
+                <button class="delete-btn-svg" type="submit">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -118,11 +84,14 @@
         </tbody>
       </table>
       <% } else { %>
-        <h3>Your playlist is empty. Let's add some songs!</h3>
+      <h3>Your playlist is empty. Let's add some songs!</h3>
       <% } %>
     </div>
     <div class="col">
-      <h3 style="color: white">Add New Songs To <span class="text-capitalize"><%= playlist.name %></span></h3>
+      <h3>
+        Add New Songs To
+        <span class="text-capitalize"><%= playlist.name %></span>
+      </h3>
       <form
         class="row g-3"
         style="margin-bottom: 1rem"
