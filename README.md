@@ -11,7 +11,7 @@
 ![Treble-Wireframes](https://user-images.githubusercontent.com/76925728/109405151-6aa55080-7922-11eb-8b1c-ae60238a95f2.PNG)
 
 ## PROJECT OVERVIEW 
-HERE'S A BRIEF SUMMARY OF OUR APP
+Treble is a site that allows users to find and curate a collection of their favorite music.
 
 ### USER STORIES
 As a user, I want to create a profile containing a list of playlists.                                                                                             As a user, I want to create or delete a playlist along with editing the playlist name.                                                                             As a user, I want to view a specific playlist with all the songs in that playlist.                                                                                 As a user, I want to be able to search and add songs to that specific playlist. I also want to be able to delete songs from the playlist. 
